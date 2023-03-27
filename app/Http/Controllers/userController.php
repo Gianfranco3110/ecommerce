@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UserEditRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\DeliveryAddress;
@@ -20,16 +22,16 @@ class userController extends Controller
 {
     //tomar esta logica para el login del frontend
     public function indexView(){
-  
+
         $message="";
-       
+
         // $users = User::where('rol','<>','1')->get();
 
-   
+
         // $count = count($users);
         $product = Product::all();
         $count = count($product);
-        for ($i=0; $i < $count  ; $i++) { 
+        for ($i=0; $i < $count  ; $i++) {
             $product[$i]->image = json_decode($product[$i]->image);
         }
         return view('/Dashboard')->with('message',$message)->with('count',$count)->with('product',$product);
@@ -39,7 +41,7 @@ class userController extends Controller
     public function usuarioLogin(SessionManager $sessionManager){
 
         if(auth()->attempt(request(['email', 'password'])) == false){
-        
+
             return back()->withErrors([
                 $sessionManager->flash('mensaje', 'hay un error en los datos del login')
             ]);
@@ -58,17 +60,17 @@ class userController extends Controller
             $estados[]= State::find($c->estado);
 
         }
-      
+
 
         $paises = Country::find($ciudades[0]->pais);
-   
 
-        
+
+
         return view('frontend.register')->with('paises',$paises)->with('estados',$estados)->with('ciudades',$ciudades);
     }
 
     public function store(Request $request){
-        
+
         $request->validate([
             'email' => 'required|unique:users',
             'password' => 'required'
@@ -119,27 +121,27 @@ class userController extends Controller
 
 
 
-        
+
     }
 
     public function destroy(){
         $user = User::all();
-        auth()->logout(); 
+        auth()->logout();
         return redirect()->to('/');
     }
 
     public function usuarios(){
-       
-        
+
+
         $users = User::all();
 
         $users = User::ordenar($users)->paginate(10);
-           
+
         // $roles = Roles::all();
-      
+
         $count = count($users);
         // $count2 = count($roles);
-        // for ($i=0; $i < $count; $i++) { 
+        // for ($i=0; $i < $count; $i++) {
         //  for ($k=0; $k < $count2 ; $k++) {
         //     if($users[$i]->rol == $roles[$k]->id){
         //         $users[$i]->rol = $roles[$k]->name;
@@ -156,88 +158,106 @@ class userController extends Controller
         $message = "";
         return view('customers.newUser')->with('user',$user)->with('roles',$roles)->with('message',$message);
     }
-    
-    public function storeUser(Request $request){
-        $users = User::all();
-        $user = new User;
-        $user->name = $request->name;
-        $user->last_name = $request->last_name;
+
+    public function storeUser(StoreUserRequest $request){
+        // $users = User::all();
+        // $user = new User;
+        // $user->name = $request->name;
+        // $user->last_name = $request->last_name;
         // dd($request);
 
-        $count = count($users);
+        // $count = count($users);
 
-        for ($i=0; $i <$count ; $i++) { 
-            if($users[$i]->email == $request->email){
-                $message="El correo ya existe!";
-                return view('/Dashboard')->with('message',$message);
-            }
-        }
+        // for ($i=0; $i <$count ; $i++) {
+        //     if($users[$i]->email == $request->email){
+        //         $message="El correo ya existe!";
+        //         return view('/Dashboard')->with('message',$message);
+        //     }
+        // }
 
-        // dd("entro");
-        $user->email = $request->email;
-        $request->password = Hash::make($request->password);
-        $user->password =  $request->password;
-        $user->whatsapp =  $request->whatsapp;
-        $user->avatar = "default.jpg";
-        $user->points = 0;
-        if($request->status == null)
-        {
-            $user->status = 0;
-        }
-        if($request->status == "on")
-        {
-            $user->status = 1;
-        }
-        $user->rol = $request->rol;
-        $user->country_id = 0;
-        $user->city_id = 0;
-        $user->save();
-       
-        auth()->login($user);
-        return redirect()->route('user.index');
+        // // dd("entro");
+        // $user->email = $request->email;
+        // $request->password = Hash::make($request->password);
+        // $user->password =  $request->password;
+        // $user->whatsapp =  $request->whatsapp;
+        // $user->avatar = "default.jpg";
+        // $user->points = 0;
+        // if($request->status == null)
+        // {
+        //     $user->status = 0;
+        // }
+        // if($request->status == "on")
+        // {
+        //     $user->status = 1;
+        // }
+        // $user->rol = $request->rol;
+        // $user->country_id = 0;
+        // $user->city_id = 0;
+        // $user->save();
+
+        // auth()->login($user);
+        // return redirect()->route('user.index');
+
+
+
+        $user = User::create(
+            $request->only('name', 'last_name', 'email','whatsapp','status')
+        + [
+            'password' => bcrypt($request->input('password')),
+        ]);
+
+        $roles = $request->input('rol', []);
+        $user->syncRoles($roles);
+        return redirect()->route('user.index')->with('mensaje', 'Usuario creado correctamente');
     }
 
     public function usuariosEdit($id){
+
+
+        // return view('user.edit', compact('user', 'roles'));
+
         $user = User::find($id);
-        $roles = Roles::all();
+        $roles = Roles::all()->pluck('name', 'id');
+        $user->load('roles');
+        // dd($roles);
         $message = "";
-        return view('customers.detail')->with('user',$user)->with('roles',$roles)->with('message',$message);
+        return view('customers.detail', compact('user', 'roles'));
     }
 
     public function usersDelete($id){
         $user = User::find($id);
-        $user->delete(); 
+        $user->delete();
         $message = "Eliminado con exito";
         return redirect()->route('user.index');
     }
 
-    public function usuariosUpdate(Request $request, $id){
-        $roles = Roles::all();
-        $user = User::find($id);
-        $user->name = $request->name;
-        $user->last_name = $request->last_name;
-        $user->rol = $request->rol;
-        $user->email = $request->email;
-        
-        if($request->status == null)
-        {
-            $user->status = 0;
-        }
-        if($request->status == "on")
-        {
-            $user->status = 1;
-        }
+    public function usuariosUpdate(UserEditRequest $request, User $user){
 
-        $user->save();
-        $message = "Datos cargados correctamente";
-        return view('customers.detail')->with('user',$user)->with('roles',$roles)->with('message',$message);
+        $data = $request->only('name', 'last_name', 'email','whatsapp','status');
+        $password=$request->input('password');
+        if($password)
+            $data['password'] = bcrypt($password);
+        // if(trim($request->password)=='')
+        // {
+        //     $data=$request->except('password');
+        // }
+        // else{
+        //     $data=$request->all();
+        //     $data['password']=bcrypt($request->password);
+        // }
+
+        $user->update($data);
+
+        $roles = $request->input('rol', []);
+        $user->syncRoles($roles);
+        return redirect()->route('user.index')->with('mensaje', 'Usuario actualizado correctamente');
     }
 
     public function newDireccionUsuario(Request $request)
     {
 
   try{
-    
+
         $deliveryAddress = new DeliveryAddress();
         $deliveryAddress->user_id= auth()->id();
         $deliveryAddress->codigoPostal =$request['codigoPostal'];
@@ -257,7 +277,7 @@ class userController extends Controller
 
     }
 
-    
+
 
 
 }

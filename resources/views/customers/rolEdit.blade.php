@@ -19,12 +19,31 @@
 
 @section('content')
     <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h2>Editar Rol</h2>
+            </div>
+            <div class="card-body">
+                <form  method="POST" action="{{ route('roles.update', $role->id) }}" >
+                    @csrf
+                    @method('PUT')
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Nombre</label>
+                      <input type="text" class="form-control @if ($errors->has('name')) is-invalid  @endif" value="{{ old('name', $role->slug) }}" id="name" name="name" placeholder="nombre">
+                      @if ($errors->has('name'))
+                        <div class="fv-plugins-message-container invalid-feedback">{{ $errors->first('name') }}</div>
+                        @endif
+                    </div>
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                  </form>
+            </div>
+        </div>
         <!-- Title and Top Buttons Start -->
         <!-- Customers List Start -->
-        <h1>Editar Usuario</h1>
-        <h1 class="success">{{$message}}</h1>
+        {{-- <h1>Editar Usuario</h1> --}}
+        {{-- <h1 class="success">{{$message}}</h1> --}}
         <div class="row">
-            <div class="col-12 mb-0">
+            {{-- <div class="col-12 mb-0">
                 <div id="checkboxTable">
                     <div class="contenedor">
                     <div class="card">
@@ -55,11 +74,11 @@
                         width: 100vw;
                         height: 80vh;
                         background: none;
-                        background: #1e1e1e;                        
+                        background: #1e1e1e;
                         padding: 5%;
                         border-radius: 3%;
                         margin-top: 12vh;
-                        
+
                     }
                     .contenedor .card form{
                         display: grid;
@@ -91,11 +110,11 @@
                 </style>
 
                 </div>
-            </div>
+            </div> --}}
         </div>
         <!-- Customers List End -->
 
-    
+
     </div>
 @endsection
 

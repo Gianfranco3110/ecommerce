@@ -1,9 +1,10 @@
 @php
-    $html_tag_data = [];
-    $title = 'Lista de usuarios';
-    $description= 'Ecommerce Customer List Page'
+$html_tag_data = [];
+$title = 'Crear usuario';
+$description= 'Ecommerce Customer List Page'
 @endphp
 @extends('layout',['html_tag_data'=>$html_tag_data, 'title'=>$title, 'description'=>$description])
+@if(Auth()->check())
 
 @section('css')
 @endsection
@@ -12,103 +13,114 @@
 @endsection
 
 @section('js_page')
-    <script src="/js/cs/checkall.js"></script>
-    <script src="/js/pages/customers.list.js"></script>
+<script src="/js/cs/checkall.js"></script>
+<script src="/js/pages/customers.list.js"></script>
 @endsection
 
 @section('content')
-    <div class="container">
-        <!-- Title and Top Buttons Start -->
-        <!-- Customers List Start -->
-        <h1>Editar Usuario</h1>
-        <h1 class="success">{{$message}}</h1>
-        <div class="row">
-            <div class="col-12 mb-0">
-                <div id="checkboxTable">
-                    <div class="contenedor">
-                    <div class="card">
-                        <form action="{{ route('user.update',['id'=>$user->id]) }}" method="post">
-                            @method('PATCH')
-                            @csrf
-                            <h2>Nombre<br><br>
-                            <input class="form-control" type="text" name="name" value="{{$user->name}}" placeholder="Nombre">
-                            </h2>
-                            <h2>Apellido<br><br>
-                            <input class="form-control" type="text" name="last_name" value="{{$user->last_name}}" placeholder="Apellidos">
-                            </h2>
-                            <h2>Rol<br><br>
-                            <select class="form-control" name="rol" id="rol">
-                                @foreach ($roles as $rol)
-                                    <option value="{{$rol->rol}}">{{$rol->name}}</option>
-                                @endforeach
-                            </select>
-                            </h2>
-                            <h2>Correo<br><br>
-                            <input class="form-control" type="text" name="email" value="{{$user->email}}" placeholder="Correo">
-                            </h2>
-                            <h2>Activo<br><br>
-                            <input type="checkbox" name="status" id="status">
-                            </h2>
-                            <button class="btn_style" type="submit" class="form-submit">Guardar</button>
-                        </form>
+<div class="row">
+    <div class="col-md-12">
+
+        @includeif('partials.errors')
+
+        <div class="card card-default">
+            <div class="card-header">
+                <h1 class="card-title">Editar Usuario</h1>
+            </div>
+            <div class="card-body">
+
+
+                <form action="{{ route('user.update',$user->id) }}" method="post">
+                    @method('PUT')
+                    @csrf
+                    <div class="box box-info padding-1">
+                        <div class="box-body row">
+                            <div class="form-group col-sm-6 mb-4">
+                                {{ Form::label('name','Nombre',['class'=>'mb-4']) }}
+                                {{ Form::text('name',$user->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'nombre']) }}
+                                {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
+                            </div>
+
+                            <div class="form-group col-sm-6 mb-4">
+                                {{ Form::label('last_name','Apellidos',['class'=>'mb-4']) }}
+                                {{ Form::text('last_name',$user->last_name, ['class' => 'form-control' . ($errors->has('last_name') ? ' is-invalid' : ''), 'placeholder' => 'apellidos']) }}
+                                {!! $errors->first('last_name', '<div class="invalid-feedback">:message</div>') !!}
+                            </div>
+
+                            <div class="form-group col-sm-6 mb-4">
+                                {{ Form::label('rol','Rol',['class'=>'mb-4']) }}
+                                {{ Form::select('rol',$roles,$user->roles, ['class' => 'form-control' . ($errors->has('rol') ? ' is-invalid' : ''), 'placeholder' => 'seleccione rol']) }}
+                                {!! $errors->first('rol', '<div class="invalid-feedback">:message</div>') !!}
+                            </div>
+
+                            <div class="form-group col-sm-6 mb-4">
+                                {{ Form::label('email','Correo',['class'=>'mb-4']) }}
+                                {{ Form::text('email',$user->email, ['class' => 'form-control' . ($errors->has('email') ? ' is-invalid' : ''), 'placeholder' => 'correo@gmail.com']) }}
+                                {!! $errors->first('email', '<div class="invalid-feedback">:message</div>') !!}
+                            </div>
+
+                            <div class="form-group col-sm-6 mb-4">
+                                {{ Form::label('password','Contraseña',['class'=>'mb-4']) }}
+                                {{-- {{ Form::password('password',null, "jooko"=>"jjj",['class' => 'form-control' . ($errors->has('password') ? ' is-invalid' : ''), 'placeholder' => 'contraseña']) }} --}}
+                                <input class="form-control form-control-solid @if ($errors->has('password')) is-invalid  @endif" type="password" value="{{ old('password') }}" placeholder="Contraseña" name="password">
+                                {!! $errors->first('password', '<div class="invalid-feedback">:message</div>') !!}
+                            </div>
+
+                            <div class="form-group col-sm-6 mb-4">
+                                {{ Form::label('whatsapp','Whatsapp',['class'=>'mb-4']) }}
+                                {{ Form::text('whatsapp',$user->whatsapp, ['class' => 'form-control' . ($errors->has('whatsapp') ? ' is-invalid' : ''), 'placeholder' => 'whatsapp']) }}
+                                {!! $errors->first('whatsapp', '<div class="invalid-feedback">:message</div>') !!}
+                            </div>
+
+
+
+
+                            <div class="form-group col-xs-12 col-sm-12 col-md-6 col-xl-6 col-xxl-4 mt-4">
+
+                                {!! Form::label('status', 'Activo:', ['class' => 'bold']) !!}
+                                <label class="checkbox-inline">
+                                    {!! Form::hidden('status', 0) !!}
+                                    {!! Form::checkbox('status', '1', $user->status,['class'=>'form-check-input']) !!}
+                                </label>
+                            </div>
+
+                        </div>
                     </div>
-                </div>
-                <script>
-                    let status = document.getElementById('status');
-                    let rol = document.getElementById('rol');
-                    let stautsServer = @json(intval($user->status));
-                    let rolServer = @json(intval($user->rol));
 
-                    rol.value = rolServer;
-                    if(stautsServer==1){
-                        status.checked = "true";
-                    }else if(stautsServer==0){
-                        status.check = "false";
-                    }
-                    // console.log(rolServer);
-                </script>
-                <style>
-                    .contenedor{
-                        width: 80vw;
-                        height: 70vh;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                    }
-                    .contenedor .card{
-                        width: 80%;
-                        height: auto;
-                        background: none;
-                    }
-                    .contenedor .card form{
-                        display: grid;
-                        grid-template-columns: 1fr 1fr;
-                        gap: 30%;
-                        margin-top: -20vh;
-                    }
-                    .contenedor input{
-                        
-                    }
-                    .btn_style{
-                    background: var(--primary);
-                    width: 50%;
-                    height: 50%;
-                    transition-duration: 0.5s;
-                    font-size: 20px;
-                    }
 
-                    .btn_style:hover{
-                    background: var(--dark);
-                    width: 50%;
-                    height: 50%;
-                    }
-                </style>
 
-                </div>
+
+                    {!! Form::submit('Actualizar', ['class' => 'btn_style mt-5 offset-2 form-submit']) !!}
+
+
+                    {{-- <input type="text" name="name">
+                    <input type="text" name="last_name">
+                    <input type="text" name="email">
+                    <input type="password" name="password">
+                    <input type="text" name="whatsapp"> --}}
+
+                </form>
             </div>
         </div>
-        <!-- Customers List End -->
 
-    
-    </div>
+    </form>
+</div>
+</div>
+
+
+
+
+
 @endsection
+
+@else
+
+<a id="inicio" href="{{route('inicio')}}">.</a>
+<script>
+    let inicio = document.getElementById('inicio');
+    setTimeout(() => {
+        inicio.click();
+    }, 500);
+</script>
+
+@endif

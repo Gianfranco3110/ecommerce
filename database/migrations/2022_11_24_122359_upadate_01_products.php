@@ -18,7 +18,7 @@ class Upadate01Products extends Migration
             $table->integer('minimaVenta')->default(0);
             $table->integer('stockLowLevel')->default(0);
             $table->boolean('stockNotification')->default(0); //condicional para enviar notificacion de stock low level
-            $table->boolean('')->default(0);
+            $table->boolean('statuse')->default(0);
             $table->double('valorIva',8,2)->default(0);
 
 

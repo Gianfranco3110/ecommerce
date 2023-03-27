@@ -65,7 +65,7 @@
 
 
                  @foreach ($roles as $rol)
-                     
+
                     <div class="card mb-2">
                         <div class="card-body pt-0 pb-0 sh-30 sh-lg-8">
                             <div class="row g-0 h-100 align-content-center">
@@ -75,17 +75,17 @@
                                 </div>
                                 <div class="col-6 col-lg-2 d-flex flex-column justify-content-center mb-2 mb-lg-0 order-3 order-lg-2">
                                     <div class="text-muted text-small d-lg-none">Nombre</div>
-                                    <div class="text-alternate">{{$rol->name}}</div>
+                                    <div class="text-alternate">{{$rol->slug}}</div>
                                 </div>
 
                                 <div class="col-6 col-lg-2 d-flex flex-column justify-content-center mb-2 mb-lg-0 order-4 order-lg-4">
                                     <div class="text-muted text-small d-lg-none">Rol</div>
                                     <div class="text-alternate">{{$rol->rol}}</div>
                                 </div>
-                           
-                                <div class="col-1 col-lg-1 d-flex flex-column justify-content-center align-items-lg-end mb-2 mb-lg-0 order-2 text-end order-lg-last">                                    
+
+                                <div class="col-1 col-lg-1 d-flex flex-column justify-content-center align-items-lg-end mb-2 mb-lg-0 order-2 text-end order-lg-last">
                                         <div class="btn-group ms-1 check-all-container">
-                                          
+
                                             <button
                                                     type="button"
                                                     class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split"
@@ -95,21 +95,21 @@
                                                     aria-expanded="false"
                                             ></button>
                                             <div class="dropdown-menu dropdown-menu-end">
-                                                <a class="dropdown-item" href="{{route('roles.edit',['id'=>$rol->id])}}">
+                                                <a class="dropdown-item" href="{{route('roles.edit',$rol->id)}}">
                                                     <span class="align-middle d-inline-block">Editar</span>
-                                                </a>                                              
-                                                <a class="dropdown-item" href="{{route('roles.delete',['id'=>$rol->id])}}">
-                                                    <span class="align-middle d-inline-block">Eliminar</span>
                                                 </a>
+                                                {{-- <a class="dropdown-item" href="{{route('roles.delete',['id'=>$rol->id])}}">
+                                                    <span class="align-middle d-inline-block">Eliminar</span>
+                                                </a> --}}
                                             </div>
                                         </div>
-                                       
-                                       
+
+
                                 </div>
                             </div>
                     </div>
                 </div>
-                @endforeach   
+                @endforeach
             </div>
         </div>
     </div>
