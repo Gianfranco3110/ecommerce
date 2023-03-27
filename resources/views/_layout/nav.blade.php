@@ -1,4 +1,4 @@
-   
+
 
 <div class="nav-content d-flex">
     <!-- Logo Start -->
@@ -23,7 +23,7 @@
             @endif
         </a>
 
-    
+
 
         @if (auth()->check())
 
@@ -191,6 +191,7 @@
     <!-- Menu Start -->
     <div class="menu-container flex-grow-1">
         <ul id="menu" class="menu">
+            @role('Super Admin|Admin|Cliente')
             <li>
                 <a href="{{route('inicio')}}">
                     <i data-acorn-icon="shop" class="icon" data-acorn-size="18"></i>
@@ -203,6 +204,8 @@
                     <span class="label">Notificaciones</span>
                 </a>
             </li>
+            @endrole
+            @role('Super Admin|Admin')
             <li>
                 <a href="#customers" data-href="{{route('user.index')}}">
                     <i data-acorn-icon="user" class="icon" data-acorn-size="18"></i>
@@ -221,10 +224,12 @@
                         </a>
                     </li>
                     {{-- @endif --}}
-                  
+
                 </ul>
             </li>
-            
+            @endrole
+
+            @role('Super Admin|Admin|Cliente')
             <li>
                 <a href="#products" data-href="{{route('product.index')}}">
                     <i data-acorn-icon="cupcake" class="icon" data-acorn-size="18"></i>
@@ -279,7 +284,7 @@
                 </ul>
             </li>
 
-            
+
             <li>
                 <a href="#orders" data-href="/Orders/List">
                     <i data-acorn-icon="cart" class="icon" data-acorn-size="18"></i>
@@ -309,13 +314,13 @@
                             <span class="label">Metodos de pago</span>
                         </a>
                     </li>
-                  
+
                     <li>
                         <a href="{{route('spop.index')}}">
                             <span class="label">POPUP Inicial</span>
                         </a>
                     </li>
-                 
+
                 </ul>
             </li>
             @hasrole('super admin')
@@ -340,11 +345,11 @@
                     </li>
 
                 </ul>
-                    
-            
+
+
             </li>
            @endhasrole
-            
+
                <li>
                 <a href="#entregas" data-href="/Storefront/Home">
                     <i data-acorn-icon="delivery-truck" class="icon" data-acorn-size="18"></i>
@@ -372,8 +377,9 @@
                     </li>
 
                 </ul>
-               
+
             </li>
+            @endrole
             {{-- <li>
                 <a href="/Shipping">
                     <i data-acorn-icon="shipping" class="icon" data-acorn-size="18"></i>

@@ -31,18 +31,18 @@ class User extends Authenticatable
     use HasRoles , HasPushSubscriptions, Notifiable;
 
     public $table = 'users';
-    
+
 
 
 
     public $fillable = [
         'name',
-        'lastname',
+        'last_name',
         'email',
         'whatsapp',
         'password',
         // 'avatar',
-        // 'status',
+        'status',
         'rol',
         // 'country_id',
         // 'city_id',
@@ -65,7 +65,7 @@ class User extends Authenticatable
         'rol'=>'string',
         // 'country_id' => 'integer',
         // 'city_id' => 'integer',
-       
+
 
     ];
 
@@ -92,7 +92,7 @@ class User extends Authenticatable
         if(auth()->user()->hasRole('super admin'))
         {
                if ($orden) {
-            return $query->orderBy('id','desc');    
+            return $query->orderBy('id','desc');
 
 
         }
@@ -100,10 +100,10 @@ class User extends Authenticatable
         }else{
               if ($orden) {
            return $query->orderBy('id','desc')->whereHas("roles", function($q){ $q->where("name",'<>',"super admin"); });
- 
+
         }
     }
-     
+
     }
 
 
@@ -123,7 +123,7 @@ class User extends Authenticatable
 
         if($cart)
             return $cart;
-    
+
         # Creamos un nuevo carrito de compras activo para el usuario
         # debido a que para este caso, no tiene uno.
         $cart = new Cart();
@@ -134,11 +134,11 @@ class User extends Authenticatable
         return $cart;
 
     }
-    
+
     #Muestra todos los pedidos
     public function getOrderAttribute(){
         $order = $this->carts()->where('status', '!=','Active')->get();
-        
+
         if ($order)
             return $order;
 
@@ -147,7 +147,7 @@ class User extends Authenticatable
     #Muestra los productos dentro de los pedidos cart->cartDetails
     public function getOrderDetailsAttribute(){
         $orderDetails = $this->carts()->where('status', '!=','Active')->first();
-         
+
         return $orderDetails;
 
     }

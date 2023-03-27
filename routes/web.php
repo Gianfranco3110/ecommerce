@@ -108,16 +108,16 @@ Route::group(['middleware' => 'auth'],function(){
 // });
 // roles
 Route::get('/roles', [App\Http\Controllers\RolesController::class, 'roles'])->name('roles.index');
-Route::get('/rolesEdit{id}', [App\Http\Controllers\RolesController::class, 'rolesEdit'])->name('roles.edit');
-Route::patch('/rolesUpdate{id}', [App\Http\Controllers\RolesController::class, 'rolesUpdate'])->name('roles.update');
+Route::get('/rolesEdit/{role}', [App\Http\Controllers\RolesController::class, 'rolesEdit'])->name('roles.edit');
+Route::put('/rolesUpdate/{role}', [App\Http\Controllers\RolesController::class, 'rolesUpdate'])->name('roles.update');
 Route::get('/rolesDelete{id}', [App\Http\Controllers\RolesController::class, 'rolesDelete'])->name('roles.delete');
 
 
 
 // User
 Route::get('/Usuarios', [App\Http\Controllers\userController::class, 'usuarios'])->name('user.index');
-Route::get('/UsuariosEdit{id}', [App\Http\Controllers\userController::class, 'usuariosEdit'])->name('user.edit');
-Route::patch('/UsuariosUpdate{id}', [App\Http\Controllers\userController::class, 'usuariosUpdate'])->name('user.update');
+Route::get('/UsuariosEdit/{id}', [App\Http\Controllers\userController::class, 'usuariosEdit'])->name('user.edit');
+Route::put('/UsuariosUpdate/{user}', [App\Http\Controllers\userController::class, 'usuariosUpdate'])->name('user.update');
 Route::post('/UsuarioLogin', [App\Http\Controllers\userController::class, 'usuarioLogin'])->name('user.login');
 Route::get('/logout',[App\Http\Controllers\userController::class, 'destroy'])->name('login.destroy');
 Route::post('/register',[App\Http\Controllers\userController::class, 'store'])->name('register.store');
@@ -165,7 +165,7 @@ Route::get('/createCategorias', [App\Http\Controllers\CategoriasController::clas
 Route::post('/newCategorias', [App\Http\Controllers\CategoriasController::class, 'store'])->name('cat.store');
 Route::patch('/CategoriasUpdate{id}', [App\Http\Controllers\CategoriasController::class, 'update'])->name('cat.update');
 
-//subCategorias 
+//subCategorias
 Route::get('/subCategorias', [App\Http\Controllers\SubCategoriasController::class, 'index'])->name('subcat.index');
 Route::get('/editsubCategorias{id}', [App\Http\Controllers\SubCategoriasController::class, 'edit'])->name('subcat.edit');
 Route::get('/createsubCategorias', [App\Http\Controllers\SubCategoriasController::class, 'create'])->name('subcat.create');

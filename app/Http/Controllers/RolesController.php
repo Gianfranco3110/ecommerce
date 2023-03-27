@@ -11,10 +11,12 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class RolesController extends Controller
 {
-    
+
 
 
     public function index()
@@ -94,21 +96,28 @@ class RolesController extends Controller
         return view('customers.roles')->with('roles',$roles);
     }
 
-    public function rolesEdit($id){
-        $rolUnico = Roles::find($id);
-        $roles = Roles::all();
-        $message = "";
-        return view('customers.rolEdit')->with('rolUnico',$rolUnico)->with('roles',$roles)->with('message',$message);
+    public function rolesEdit(Roles $role){
+        return view('customers.rolEdit', compact('role'));
     }
 
-    public function rolesUpdate(Request $request, $id){
-        $roles = Roles::find($id);
-        $roles->name = $request->name;
-        $roles->rol = $request->rol;
-        $roles->save();
-        // dd("enterado");
-        $message = "Datos cargados correctamente";
-        return view('customers.rolEdit')->with('rolUnico',$roles)->with('message',$message);
+    public function rolesUpdate(Request $request, Role $role){
+        $request->validate([
+            'name' =>'required|max:50',
+        ],[],[
+            'name' => 'nombre',
+        ]);
+        $role->update([
+            'slug'=>$request->name
+        ]);
+        return redirect()->route('roles.index');
+
+        // $roles = Roles::find($id);
+        // $roles->name = $request->name;
+        // $roles->rol = $request->rol;
+        // $roles->save();
+        // // dd("enterado");
+        // $message = "Datos cargados correctamente";
+        // return view('customers.rolEdit')->with('rolUnico',$roles)->with('message',$message);
     }
     public function rolesDelete(Request $request, $id){
         $roles = Roles::find($id);

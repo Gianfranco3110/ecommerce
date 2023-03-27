@@ -17,6 +17,11 @@
 @endsection
 
 @section('content')
+    @if (session('mensaje'))
+    <div class="alert alert-success">
+        <strong>{{ session('mensaje') }}</strong>
+    </div>
+    @endif
     <div class="container">
         <!-- Title and Top Buttons Start -->
         <div class="page-title-container">
@@ -63,10 +68,9 @@
         <div class="row">
         <div class="ir_derecha">
             @if (auth()->check())
-
-            <a href="{{route('new.user')}}" class="btn btn-1 btn_style" style="width: 10%;">Agregar</a>
+                <a href="{{route('new.user')}}" class="btn btn-1 btn_style" style="width: 10%;">Agregar</a>
             @endif
-          
+
         </div>
             <div class="col-12 mb-5">
                 <div class="card mb-2 bg-transparent no-shadow d-none d-lg-block">
@@ -75,8 +79,8 @@
                             <div class="card-body pt-0 pb-0 h-100">
                                 <div class="row g-0 h-100 align-content-center">
                                     <div class="col-lg-1 d-flex align-items-center mb-2 mb-lg-0 text-muted text-medium">ID</div>
-                                    <div class="col-lg-2 d-flex align-items-center text-muted text-medium">NOMBRE</div>
-                                    <div class="col-lg-2 d-flex align-items-center text-muted text-medium">APELLIDOS</div>
+                                    <div class="col-lg-2 d-flex align-items-center text-muted text-medium">Nombres</div>
+                                    <div class="col-lg-2 d-flex align-items-center text-muted text-medium">Apellidos</div>
                                     <div class="col-lg-2 d-flex align-items-center text-muted text-medium">Rol</div>
                                     <div class="col-lg-2 d-flex align-items-center text-muted text-medium">Correo</div>
                                     <div class="col-lg-2 d-flex align-items-center text-muted text-medium">Estatus</div>
@@ -89,7 +93,7 @@
 
 
                  @foreach ($users as $user)
-                     
+
                     <div class="card mb-2">
                         <div class="card-body pt-0 pb-0 sh-30 sh-lg-8">
                             <div class="row g-0 h-100 align-content-center">
@@ -107,7 +111,9 @@
                                 </div>
                                 <div class="col-6 col-lg-2 d-flex flex-column justify-content-center mb-2 mb-lg-0 order-4 order-lg-4">
                                     <div class="text-muted text-small d-lg-none">Rol</div>
-                                    <div class="text-alternate">{{$user->rol}}</div>
+                                    <div class="text-alternate">
+                                        {{$user->roles[0]->slug}}
+                                    </div>
                                 </div>
 
                                 <div class="col-6 col-lg-2 d-flex flex-column justify-content-center mb-2 mb-lg-0 order-5 order-lg-4">
@@ -116,10 +122,10 @@
                                         <a href="#" class="text-truncate h-100 d-flex align-items-center">{{$user->email}}</a>
                                     </div>
                                 </div>
-                           
+
                                 <div class="col-1 col-lg-1 d-flex flex-column justify-content-center align-items-lg-end mb-2 mb-lg-0 order-2 text-end order-lg-last">
                                         <div class="btn-group ms-1 check-all-container">
-              
+
                                             <button
                                                     type="button"
                                                     class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split"
@@ -129,26 +135,32 @@
                                                     aria-expanded="false"
                                             ></button>
                                             <div class="dropdown-menu dropdown-menu-end">
-                                                <a class="dropdown-item" href="{{route('user.edit',['id'=>$user->id])}}">
+                                                <a class="dropdown-item" href="{{route('user.edit',$user->id)}}">
                                                     <span class="align-middle d-inline-block">Editar</span>
-                                                </a>                                              
+                                                </a>
                                                 <a class="dropdown-item" href="{{route('user.delete',['id'=>$user->id])}}">
                                                     <span class="align-middle d-inline-block">Eliminar</span>
                                                 </a>
                                             </div>
                                         </div>
-                                 
+
                                 </div>
                                 <div class="col-12 col-lg-2 d-flex flex-column justify-content-center mb-2 mb-lg-0 order-last order-lg-5">
                                     <div class="text-muted text-small d-lg-none">Estatus</div>
                                     <div class="text-alternate">
-                                        <a href="#" class="text-truncate h-100 d-flex align-items-center">{{$user->status}}</a>
+                                        <a href="#" class="text-truncate h-100 d-flex align-items-center">
+                                            @if ($user->status == 1)
+                                                <span class="badge bg-outline-primary">Activo</span>
+                                            @else
+                                                <span class="badge bg-outline-danger">Inactivo</span>
+                                            @endif
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    @endforeach   
+                    @endforeach
 
 
 
