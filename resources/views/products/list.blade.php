@@ -99,7 +99,7 @@
                                             <div class="lh-1 text-alternate"> {{$product->stock}}</div>
                                         </div>
                                         <div class="col-12 col-lg-3 d-flex flex-column pe-1 mb-2 mb-lg-0 justify-content-center order-4">
-                                            <div class="lh-1 text-alternate">$ {{$product->price}}</div>
+                                            <div class="lh-1 text-alternate">${{ number_format($product->price, 2) }}</div>
                                         </div>
                                         <div class="col-12 col-lg-2 d-flex flex-column pe-1 mb-2 mb-lg-0 align-items-start justify-content-center order-5">
                                             <span class="badge bg-outline-primary group">{{$product->status}}</span>
