@@ -380,7 +380,10 @@
                         </div>
 
                         <br><br>
-                        <input type="file" name="image[]" multiple label="image" id="image">
+                        <input class="form-control @if ($errors->has('image')) is-invalid  @endif" type="file" name="image[]" multiple label="image" id="image">
+                        @if ($errors->has('image'))
+                            <div class="fv-plugins-message-container invalid-feedback">{{ $errors->first('image') }}</div>
+                        @endif
                         <br><br>
                         <div class="text-center">
                             {{-- <label for="image"> --}}
