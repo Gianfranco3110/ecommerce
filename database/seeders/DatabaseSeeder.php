@@ -19,6 +19,12 @@ class DatabaseSeeder extends Seeder
             RolesSeeder::class,
             RoleHasPermissionSeeder::class,
             UserSeeder::class,
+            ColorSeeder::class,
+            SizeSeeder::class,
+            DimensionsSeeder::class,
+            BrandSeeder::class,
+            CategorySeeder::class,
+            SubCategorySeeder::class,
         ]);
     }
 }
