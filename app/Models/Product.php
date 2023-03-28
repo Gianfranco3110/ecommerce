@@ -13,12 +13,12 @@ class Product extends Model implements HasMedia
 {
     use HasFactory;
     use InteractsWithMedia;
-    
+
     public $table = 'products';
-    
-    
-    
-    
+
+
+
+
     public $fillable = [
         'name',
         'stock',
@@ -29,7 +29,7 @@ class Product extends Model implements HasMedia
         'description',
         'details',
         'sku',
-        // 'image',
+        'image',
         'meta_title',
         'meta_description',
         'attributes',
@@ -41,20 +41,20 @@ class Product extends Model implements HasMedia
         'productPromo',
         'productTop',
         'valorPromo'
-        
-        
-        
+
+
+
     ];
-    
-    
-    
+
+
+
     public function scopeOrdenar($query,$orden){
         if ($orden) {
-            return $query->orderBy('id','desc');       
+            return $query->orderBy('id','desc');
         }
     }
-    
-    
+
+
     public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumb')
@@ -62,7 +62,7 @@ class Product extends Model implements HasMedia
         ->height(150)
         ->sharpen(10);
     }
-    
+
     public function brands($input,$id)
     {
         foreach($input as $brand)
@@ -74,10 +74,10 @@ class Product extends Model implements HasMedia
         }
         return;
     }
-    
+
     public function sizes($input,$id)
     {
-        
+
         foreach($input as $size)
         {
             $productSize = new ProductSizes();
@@ -108,6 +108,6 @@ class Product extends Model implements HasMedia
             $productDmension->save();
         }
         return;
-        
+
     }
 }
