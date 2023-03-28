@@ -344,7 +344,7 @@ $description= 'Nuevo productos'
                 <!-- Gallery Start -->
                 {{-- <h2>Imagenes del producto<br><br>
                     <img src="/img/seo/default.png" id="picture" alt="" srcset="" style="width: 100px">
-                    <input class="custom-file-input" type="file" name="image" label="image" id="image" required>
+                    <input class="custom-file-input" type="file" name="image[]" label="image" id="image" multiple required>
                 </h2> --}}
                 <!-- Gallery End -->
                 

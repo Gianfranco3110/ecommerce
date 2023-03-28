@@ -45,11 +45,12 @@ class ProductController extends Controller
     
     public function store(Request $request)
     {
+        
         //Toma los datos de los input
         $input = $request->all();
         if($request->status == null) $input['status']= 0;
         else{$input['status'] = 1; }
-        
+        //dd($input);
         //instancia y crea el producto
         $product = Product::create($input);
         $products = new Product();
@@ -76,7 +77,6 @@ class ProductController extends Controller
         $file->move(public_path($destinationPath), $myimage);
         return redirect()->route('product.index');
     }
-    
     public function productUpdate(request $request, $id)
     {
         
