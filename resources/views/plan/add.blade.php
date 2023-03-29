@@ -40,8 +40,8 @@ $description= 'Añadir Planes'
                                     </div>
 
                                     <div class="form-group col-sm-6 mb-4">
-                                        {{ Form::label('amount','Monto',['class'=>'form-label']) }}
-                                        {{ Form::number('amount',null,['class' => 'form-control' . ($errors->has('amount') ? ' is-invalid' : ''), 'placeholder' => 'Monto']) }}
+                                        {{ Form::label('amount','Cantidad',['class'=>'form-label']) }}
+                                        {{ Form::number('amount',null,['class' => 'form-control' . ($errors->has('amount') ? ' is-invalid' : ''), 'placeholder' => 'cantidad']) }}
                                         {!! $errors->first('amount', '<div class="invalid-feedback">:message</div>') !!}
                                     </div>
 
