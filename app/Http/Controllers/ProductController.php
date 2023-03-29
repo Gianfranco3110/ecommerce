@@ -123,7 +123,7 @@ class ProductController extends Controller
         $product->attributes = $request->tagsBasic;
         $product->meta_title = $request->meta_title;
         $product->meta_description = $request->meta_description;
-
+        $product->status = ('1');
         //img upload
         $data_img = [];
         $destinationPath = 'img/product/product_id_'.$product->id;

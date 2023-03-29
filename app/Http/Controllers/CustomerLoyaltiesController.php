@@ -47,7 +47,7 @@ class CustomerLoyaltiesController extends Controller
      */
     public function store(Request $request)
     {
-        
+        //dd($request);
         $cl = new Customer_loyalties;
         $cl->name = $request->name;
         $cl->description = $request->description;
@@ -56,6 +56,14 @@ class CustomerLoyaltiesController extends Controller
         //$cl->productos = $request->productos;
         $cl->active = $request->active === null ? 0 : $request->active;
         $cl->save();
+
+        if ($request->productos != null){
+            foreach ($request->productos as $p) {
+                $aux = Product::find($p);
+                $aux->customer_loyalties_id = $cl->id;
+                $aux->save();
+            }
+        }
 
         // "_token" => "AtDXBwaxeI2jVe5i9rP4kwmTz5DewuXviiUAJgPn"
         // "name" => "CompraFestiva"
