@@ -198,7 +198,7 @@
                     <span class="label">Pantalla Principal</span>
                 </a>
             </li>
-            <li>
+         <!--   <li>
                 <a href="{{route('notification.list')}}">
                     <i data-acorn-icon="bell" class="icon" data-acorn-size="18"></i>
                     <span class="label">Notificaciones</span>
@@ -210,7 +210,7 @@
                     <span class="label">Planes</span>
                 </a>
             </li>
-            @endrole
+          @endrole
             @role('Super Admin|Admin')
             <li>
                 <a href="#customers" data-href="{{route('user.index')}}">
@@ -252,21 +252,9 @@
                             <span class="label">Detail</span>
                         </a>
                     </li> --}}
-                    <li>
-                        <a href="{{route('cupon.index')}}">
-                            <span class="label">Cupones</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{route('fidel.index')}}">
-                            <span class="label">Fidelizacion</span>
-                        </a>
-                    </li>
-                      <li>
-                        <a href="{{route('catalago-premios.index')}}">
-                            <span class="label">Catalago de Premios</span>
-                        </a>
-                    </li>
+                    
+                    
+                      
                     <li>
                         <a href="{{route('cat.index')}}">
                             <span class="label">Categorias</span>
@@ -277,11 +265,7 @@
                             <span class="label">Sub categorias</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="{{route('cart.index')}}">
-                            <span class="label">Carrito</span>
-                        </a>
-                    </li>
+                    
                     {{-- <li>
                         <a href="/Products/Detail">
                             <span class="label">modelo</span>
@@ -289,7 +273,51 @@
                     </li> --}}
                 </ul>
             </li>
-
+            <li>
+                <a href="#fidelizacion" data-href="{{route('product.index')}}">
+                    <i data-acorn-icon="cupcake" class="icon" data-acorn-size="18"></i>
+                    <span class="label">Sistema de fidelizacion</span>
+                </a>
+                <ul id="fidelizacion">
+                    {{-- <li>
+                        <a href="{{route('product.index')}}">
+                            <span class="label">Detail</span>
+                        </a>
+                    </li> --}}
+                    <li>
+                        <a href="{{route('fidel.index')}}">
+                            <span class="label">Fidelizacion</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('cupon.index')}}">
+                            <span class="label">Cupones</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('notification.list')}}">
+                            <span class="label">Notificaciones push</span>
+                        </a>
+                    </li>
+                      <li>
+                        <a href="{{route('catalago-premios.index')}}">
+                            <span class="label">Catalago de Premios</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('catalago-premios.index')}}">
+                            <span class="label">Detalle de puntos</span>
+                        </a>
+                    </li>
+                    
+                    
+                    {{-- <li>
+                        <a href="/Products/Detail">
+                            <span class="label">modelo</span>
+                        </a>
+                    </li> --}}
+                </ul>
+            </li>
 
             <li>
                 <a href="#orders" data-href="/Orders/List">
@@ -329,7 +357,7 @@
 
                 </ul>
             </li>
-            @hasrole('super admin')
+            @role('Super Admin|Admin')
                    <li>
                 <a href="#personalizacion" data-href="/Storefront/Home">
                     <i data-acorn-icon="board-3" class="icon" data-acorn-size="18"></i>
@@ -351,11 +379,8 @@
                     </li>
 
                 </ul>
-
-
             </li>
-           @endhasrole
-
+            @endrole
                <li>
                 <a href="#entregas" data-href="/Storefront/Home">
                     <i data-acorn-icon="delivery-truck" class="icon" data-acorn-size="18"></i>

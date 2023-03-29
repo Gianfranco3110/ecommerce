@@ -100,7 +100,6 @@ class ProductController extends Controller
 
         return redirect()->route('product.index')->with('mensaje', 'Producto Agregado Correctamente');
     }
-
     public function productUpdate(request $request, $id)
     {
         $request->validate([
@@ -124,7 +123,7 @@ class ProductController extends Controller
         $product->attributes = $request->tagsBasic;
         $product->meta_title = $request->meta_title;
         $product->meta_description = $request->meta_description;
-
+        $product->status = ('1');
         //img upload
         $data_img = [];
         $destinationPath = 'img/product/product_id_'.$product->id;
