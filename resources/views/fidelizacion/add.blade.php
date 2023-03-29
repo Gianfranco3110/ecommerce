@@ -56,8 +56,15 @@
                                         {{ Form::text('points',null,['class' => 'form-control' . ($errors->has('points') ? ' is-invalid' : ''), 'placeholder' => 'points','required']) }}
                                         {!! $errors->first('points', '<div class="invalid-feedback">:message</div>') !!}
                                     </div>
-
-                                <!--      <div class="form-group col-xs-12 col-sm-12 col-md-6 col-xl-6 col-xxl-4 mt-5">
+                                    <h4>Productos</h4><br>
+                                    <div class="checkboxs" id="checkboxs">
+                                        @foreach ($product as $p)
+                                        <ul>
+                                        <li><input type="checkbox" name="productos[]" class="check" id="{{$p->id}}" value="{{$p->id}}"> {{$p->name}}</li>
+                                        </ul>
+                                        @endforeach
+                                      </div>                                    
+                                    <!--      <div class="form-group col-xs-12 col-sm-12 col-md-6 col-xl-6 col-xxl-4 mt-5">
                                         
                                         {!! Form::label('status', 'Activo:', ['class' => 'bold ']) !!}
                                         <label class="checkbox-inline">

@@ -41,9 +41,6 @@ class Product extends Model implements HasMedia
         'productPromo',
         'productTop',
         'valorPromo'
-
-
-
     ];
 
 

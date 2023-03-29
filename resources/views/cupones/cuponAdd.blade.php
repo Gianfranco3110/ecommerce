@@ -41,40 +41,40 @@ $description= 'Añadir cupones'
                                     </div>
                                     
                                     <div class="form-group col-sm-6 mb-4 mt-2">
-                                        {{ Form::label('codigo','Codigo',['class'=>'mb-4']) }}
-                                        {{ Form::text('codigo',null,['class' => 'form-control' . ($errors->has('codigo') ? ' is-invalid' : ''), 'placeholder' => 'codigo', 'required']) }}
+                                        {{ Form::label('codigo','Código',['class'=>'mb-4']) }}
+                                        {{ Form::text('codigo',null,['class' => 'form-control' . ($errors->has('codigo') ? ' is-invalid' : ''), 'placeholder' => 'código', 'required']) }}
                                         {!! $errors->first('codigo', '<div class="invalid-feedback">:message</div>') !!}
                                     </div>
                                     
                                     <div class="form-group col-sm-6 mb-4">
-                                        {{ Form::label('max_change','Max. Canjes',['class'=>'mb-4']) }}
-                                        {{ Form::text('max_change',null,['class' => 'form-control' . ($errors->has('max_change') ? ' is-invalid' : ''), 'placeholder' => 'Max. canjes' , 'required']) }}
+                                        {{ Form::label('max_change','Cantidad de cupones',['class'=>'mb-4']) }}
+                                        {{ Form::text('max_change',null,['class' => 'form-control' . ($errors->has('max_change') ? ' is-invalid' : ''), 'placeholder' => 'Cantidad de cupones' , 'required']) }}
                                         {!! $errors->first('max_change', '<div class="invalid-feedback">:message</div>') !!}
                                     </div>
                                     
                                     
                                     <div class="form-group col-sm-6 mb-4">
-                                        {{ Form::label('start_day','Dia inicial',['class'=>'mb-4']) }}
-                                        {{ Form::date('start_day',null,['class' => 'form-control' . ($errors->has('start_day') ? ' is-invalid' : ''), 'placeholder' => 'Dia inicial','required']) }}
+                                        {{ Form::label('start_day','Fecha inicial',['class'=>'mb-4']) }}
+                                        {{ Form::date('start_day',null,['class' => 'form-control' . ($errors->has('start_day') ? ' is-invalid' : ''), 'placeholder' => 'Fecha inicial','required']) }}
                                         {!! $errors->first('start_day', '<div class="invalid-feedback">:message</div>') !!}
                                     </div>
 
                                      <div class="form-group col-sm-6 mb-4">
-                                        {{ Form::label('final_day','Dia Final',['class'=>'mb-4']) }}
-                                        {{ Form::date('final_day',null,['class' => 'form-control' . ($errors->has('final_day') ? ' is-invalid' : ''), 'placeholder' => 'Dia final', 'required']) }}
+                                        {{ Form::label('final_day','Fecha final',['class'=>'mb-4']) }}
+                                        {{ Form::date('final_day',null,['class' => 'form-control' . ($errors->has('final_day') ? ' is-invalid' : ''), 'placeholder' => 'Fecha final', 'required']) }}
                                         {!! $errors->first('final_day', '<div class="invalid-feedback">:message</div>') !!}
                                     </div>
                                     
                                     
                                     <div class="form-group col-sm-6 mb-4">
-                                        {{ Form::label('number_exchange','Numero De canjes',['class'=>'mb-4']) }}
-                                        {{ Form::text('number_exchange',null,['class' => 'form-control' . ($errors->has('number_exchange') ? ' is-invalid' : ''), 'placeholder' => 'N.Canjes', 'required']) }}
+                                        {{ Form::label('number_exchange','Número de canjes por comprador',['class'=>'mb-4']) }}
+                                        {{ Form::text('number_exchange',null,['class' => 'form-control' . ($errors->has('number_exchange') ? ' is-invalid' : ''), 'placeholder' => 'N.Canjes por comprador', 'required']) }}
                                         {!! $errors->first('number_exchange', '<div class="invalid-feedback">:message</div>') !!}
                                     </div>
                                     
                                     <div class="form-group col-sm-6 mb-4">
-                                        {{ Form::label('amount','Monto',['class'=>'mb-4']) }}
-                                        {{ Form::number('amount',null,['class' => 'form-control' . ($errors->has('amount') ? ' is-invalid' : ''), 'placeholder' => 'Monto', 'required']) }}
+                                        {{ Form::label('amount','Valor',['class'=>'mb-4']) }}
+                                        {{ Form::number('amount',null,['class' => 'form-control' . ($errors->has('amount') ? ' is-invalid' : ''), 'placeholder' => 'Valor', 'required']) }}
                                         {!! $errors->first('amount', '<div class="invalid-feedback">:message</div>') !!}
                                     </div>
                                     

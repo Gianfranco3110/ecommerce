@@ -43,7 +43,7 @@
                                  <h2>Puntos<br><br>
                                     <input class="form-control" type="text" name="points" value="{{$cl->points}}" placeholder="Puntos" Required>
                                 </h2> 
-                              <!--   <h2>Productos<br><br>
+                             <h2>Productos<br><br>
                                     <div class="checkboxs" id="checkboxs">
                                         @foreach ($product as $p)
                                         <span><input type="checkbox" class="check" id="{{$p->id}}" value="{{$p->name}}"> {{$p->name}}</span>
@@ -51,7 +51,7 @@
                                       </div>
                                     <input style="position:absolute; filter:opacity(0); transform:translateX(-5000px);" type="text" name="productos" id="ghostJson">
                                  </h2>
-                            -->
+                            
                                  <h2>Activo<br><br>
                                     <input type="checkbox" name="status" id="status" value="1">
                                  </h2>
