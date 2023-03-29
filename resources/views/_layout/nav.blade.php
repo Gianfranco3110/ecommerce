@@ -204,8 +204,13 @@
                     <span class="label">Notificaciones</span>
                 </a>
             </li>
-                        -->
-            @endrole
+            <li>
+                <a href="{{route('plan.index')}}">
+                    <i data-acorn-icon="bell" class="icon" data-acorn-size="18"></i>
+                    <span class="label">Planes</span>
+                </a>
+            </li>
+          @endrole
             @role('Super Admin|Admin')
             <li>
                 <a href="#customers" data-href="{{route('user.index')}}">

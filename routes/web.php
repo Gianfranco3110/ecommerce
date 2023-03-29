@@ -136,6 +136,12 @@ Route::get('/productEdit{id}', [App\Http\Controllers\ProductController::class, '
 Route::patch('/productUpdate{id}', [App\Http\Controllers\ProductController::class, 'productUpdate'])->name('product.update');
 Route::patch('/productJsonEdit{id}', [App\Http\Controllers\ProductController::class, 'productJsonImages'])->name('pjson.images');
 
+//Plans
+Route::get('plans', [App\Http\Controllers\PlanController::class, 'index'])->name('plan.index');
+Route::get('plans/add', [App\Http\Controllers\PlanController::class, 'add'])->name('plan.add');
+Route::post('plans/store', [App\Http\Controllers\PlanController::class, 'store'])->name('plan.store');
+Route::get('plans/edit/{id}', [App\Http\Controllers\PlanController::class, 'edit'])->name('plan.edit');
+Route::get('plans/delet/{id}', [App\Http\Controllers\PlanController::class, 'destroy'])->name('plan.delet');
 
 
 
