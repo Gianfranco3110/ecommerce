@@ -198,7 +198,7 @@
                     <span class="label">Pantalla Principal</span>
                 </a>
             </li>
-         <!--   <li>
+           <li>
                 <a href="{{route('notification.list')}}">
                     <i data-acorn-icon="bell" class="icon" data-acorn-size="18"></i>
                     <span class="label">Notificaciones</span>
