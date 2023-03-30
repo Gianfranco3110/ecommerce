@@ -191,7 +191,7 @@
     <!-- Menu Start -->
     <div class="menu-container flex-grow-1">
         <ul id="menu" class="menu">
-            @role('Super Admin|Admin|Cliente')
+            @role('Super Admin|Admin')
             <li>
                 <a href="{{route('inicio')}}">
                     <i data-acorn-icon="shop" class="icon" data-acorn-size="18"></i>
