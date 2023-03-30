@@ -10,25 +10,25 @@
         <a href="" class="logo">
             <img src="{{ asset('img/utilidad/logo.png') }}" alt="logo">
         </a>
-        
+
         @if( request()->routeIs('home'))
         <a href="" class="logo2">
             <img src="{{ asset('img/utilidad/logo.png') }}" alt="logo">
         </a>
         @else
-        
+
         <a class="back" href="#"  onclick="return window.history.back();">
             <i class="fa fa-arrow-left" class="text-white">
             </i>
         </a>
         @endif
-        
-        
-        
-        
+
+
+
+
         <nav class="link border-top">
             <div >
-                <a href="{{route('home')}}">
+                <a href="{{url('/')}}">
                     Home
                 </a>
                 <a href="{{route('tienda')}}">
@@ -40,14 +40,14 @@
                 <a href="{{route('blog')}}">
                     Blog
                 </a>
-                
+
             </div>
         </nav>
-        
+
         <div class="icons">
             {{-- @if ((Auth()->check()) && (auth()->user()->hasRole('super admin')))
                 <i class="fa fa-bar-chart" aria-hidden="true"></i>
-                    
+
             @endif --}}
             <a  class="buscar" >
                 <i class="fa fa-search" id="icon-search"></i>
@@ -62,30 +62,30 @@
                 </a>
             @endif
             <a href="/favoritos">
-                
+
                 <i class="fa fa-heart"></i>
             </a>
 
             @if ((Auth()->check()) && (auth()->user()->hasRole('super admin')))
                 <a href="{{route('inicio')}}"><i class="fa fa-bar-chart" aria-hidden="true"></i></a>
-                    
+
             @else
-             
+
                 <a href="{{route('carrito')}}">
                     <i class="fa fa-shopping-cart position-relative"> <span >
                        @include('frontend.estado')
                         <span class="visually-hidden">New alerts</span>
                     </span></i>
                 </a>
-            
+
             @endif
-            
-            
-            
-            
+
+
+
+
         </div>
-        
-        
+
+
         <nav class="link_categoria">
             <ul >
                 <li>
@@ -94,31 +94,31 @@
                     </a>
                 </li>
                 <li>
-                    
+
                     <a href="#">
                         Dama
                     </a>
                 </li>
                 <li>
-                    
+
                     <a href="#">
                         Hogar
                     </a>
                 </li>
                 <li>
-                    
+
                     <a href="#">
                         Cocina
                     </a>
                 </li>
-                
+
             </ul>
         </nav>
-        
-        
-        
+
+
+
     </div>
-    
+
     <div id="ctn-bars-search">
         <input type="text" id="inputSearch" placeholder="Search">
     </div>
@@ -149,11 +149,11 @@
             </a>
         </li>
     </ul>
-    
+
     <div id="cover-ctn-search">
-        
+
     </div>
-    
+
     <nav class="nav-telefono">
         <a href="/"  class="{{ request()->routeIs('home') ? 'active': ''}}"><i class="fa fa-home"></i><span>Home</span>
         </a>
@@ -163,6 +163,6 @@
         </a>
         <a href="/blog"  class="{{  request()->routeIs('blog') ? 'active': ''}}"> <i class="fa fa-book"></i><span>Blog</span>
         </a>
-       
+
     </nav>
 </div>

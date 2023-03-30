@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                
+
                 <form class="tooltip-end-bottom mb-3" action="{{route('user.login')}}" method="POST">
                     @csrf
                     <div class="mb-3 filled form-group tooltip-end-top">
@@ -25,7 +25,8 @@
                         <input placeholder="Password" / id="password" type="password"
                             class="form-control pe-7 @error('password') is-invalid @enderror" name="password" required
                             autocomplete="current-password">
-                        <a class="text-small position-absolute t-3 e-3" href="#">olvidó?</a>
+                        <a class="text-small position-absolute t-3 e-3" data-bs-toggle="modal" data-bs-target="#moda_change_pass" data-bs-whatever="@mdo" href="#">olvidó?</a>
+
                         @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
