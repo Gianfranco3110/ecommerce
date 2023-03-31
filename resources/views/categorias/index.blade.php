@@ -45,14 +45,13 @@
                 <!-- Top Buttons End -->
             </div> --}}
             <div class="ir_derecha">
-             
-                 <div class="ir_derecha">
-                
-                @hasanyrole('super admin')
-                           <a href="{{route('cat.create')}}" class="btn btn-1 btn_style" style="width: 10%;">Agregar</a>
 
-               @endhasanyrole
-              
+                 <div class="ir_derecha">
+
+                @role('Super Admin|Admin')
+                    <a href="{{route('cat.create')}}" class="btn btn-1 btn_style" style="width: 10%;">Agregar</a>
+               @endrole
+
             </div>
             </div>
         </div>
@@ -96,7 +95,7 @@
                     @foreach ($categories as $ctgry)
                     <div class="card mb-2">
                         <div class="row g-0 h-100 sh-lg-9 position-relative">
-                           
+
                             <div class="col py-4 py-lg-0">
                                 <div class="ps-5 pe-4 h-100">
                                     <div class="row g-0 h-100 align-content-center">
@@ -112,7 +111,7 @@
                                         <div class="col-1 d-flex flex-column mb-2 mb-lg-0 align-items-end order-2 order-lg-last justify-content-lg-center">
 
                                             <div class="btn-group ms-1 check-all-container">
-    
+
                                                 <button
                                                         type="button"
                                                         class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split"
@@ -124,14 +123,14 @@
                                                 <div class="dropdown-menu dropdown-menu-end">
                                                     <a class="dropdown-item" href="{{route('cat.edit',['id'=>$ctgry->id])}}">
                                                         <span class="align-middle d-inline-block">Editar</span>
-                                                    </a>                                              
+                                                    </a>
                                                     {{-- <a class="dropdown-item" href="{{route('payment.delete',['id'=>$ctgry->id])}}">
                                                         <span class="align-middle d-inline-block">Delete</span>
                                                     </a> --}}
                                                 </div>
                                             </div>
                                         </div>
-                                     
+
 
                                     </div>
                                 </div>
@@ -139,7 +138,7 @@
                         </div>
                     </div>
                     @endforeach
-              
+
                     <!-- Items Container Start -->
 
                     <!-- List Items End -->

@@ -17,6 +17,11 @@
     <script src="/js/pages/customers.list.js"></script>
 @endsection
 @section('content')
+@if (session('mensaje'))
+<div class="alert alert-{{session('type')}}">
+    <strong>{{ session('mensaje') }}</strong>
+</div>
+@endif
 <section class="content container-fluid">
     <div class="row">
         <div class="col-md-12">
@@ -27,7 +32,7 @@
                 </div>
                 <div class="card-body">
                     {{-- content --}}
-
+                <form method="POST" action="{{ route('send.web-notification') }}"  role="form" enctype="multipart/form-data">
                     <div class="box box-info padding-1">
                         <div class="box-body row">
                             {{-- <div class="mb-5">
@@ -39,47 +44,64 @@
 
                             <div class="col-sm-7">
 
-                            <form method="POST" action="{{ route('send.web-notification') }}"  role="form" enctype="multipart/form-data">
-                                <div class="form-group col-sm-6 mb-4">
+
+                                <div class="form-group col-sm-10 mb-4">
                                 @csrf
-                                    {{Form::label('title', 'Titulo', ['class'=>'mb-4'])}}
-                                    {{Form::text('title',null, ['class' => 'form-control'])}}
+                                    {{Form::label('title', 'Titulo', ['class'=>'form-label'])}}
+                                    {{Form::text('title',old('title'), ['class' =>  'form-control' . ($errors->has('cant') ? ' is-invalid' : '')])}}
+                                    {!! $errors->first('title', '<div class="invalid-feedback">:message</div>') !!}
                                 </div>
-                                <div class="form-group col-sm-6 mb-4">
-                                    {{Form::label('body', 'Descripción', ['class'=>'mb-4'])}}
-                                    {{Form::text('body',null, ['class' => 'form-control'])}}
+                                <div class="form-group col-sm-10 mb-4">
+                                    {{Form::label('body', 'Descripción', ['class'=>'form-label'])}}
+                                    {{Form::text('body',null, ['class' =>  'form-control' . ($errors->has('cant') ? ' is-invalid' : '')])}}
+                                    {!! $errors->first('body', '<div class="invalid-feedback">:message</div>') !!}
                                 </div>
-                                <div class="form-group col-sm-6 mb-4">
-                                    {{Form::label('link', 'Enlace', ['class'=>'mb-4'])}}
-                                    {{Form::text('link',null, ['class' => 'form-control'])}}
+                                <div class="form-group col-sm-10 mb-4">
+                                    {{Form::label('link', 'Enlace', ['class'=>'form-label'])}}
+                                    {{Form::text('link',null, ['class' =>  'form-control' . ($errors->has('cant') ? ' is-invalid' : '')])}}
+                                    {!! $errors->first('link', '<div class="invalid-feedback">:message</div>') !!}
                                 </div>
-                                <div class="form-group col-sm-6 mb-4">
-                                    {{Form::label('date', 'Fecha de Lanzamiento', ['class'=>'mb-4'])}}
+                                <div class="form-group col-sm-10 mb-4">
+                                    {{Form::label('date', 'Fecha de Lanzamiento', ['class'=>'form-label'])}}
                                     {{-- {{ Form::datetimeLocal('date', null,['class' => 'form-control']) }} --}}
-                                    <input type="datetime-local" class="form-control" name="date" id="date" my-date-format="Y-m-d H:i">
+                                    <input type="datetime-local" class="form-control @if ($errors->has('date')) is-invalid  @endif" name="date" value="{{old('date')}}" id="date" my-date-format="Y-m-d H:i">
+                                    {!! $errors->first('date', '<div class="invalid-feedback">:message</div>') !!}
+                                </div>
+                                <div class="form-group col-sm-10 mb-4">
+                                    {{Form::label('cant', 'Cantidad', ['class'=>'form-label'])}}
+                                    {{Form::number('cant',null, ['class' =>  'form-control' . ($errors->has('cant') ? ' is-invalid' : ''),'placeholder' => 'Ingrese la cantidad de notificaciones','id'=>'id_cant'])}}
+                                    {!! $errors->first('cant', '<div id="id_messague_error_cant" class="invalid-feedback">:message</div>') !!}
+                                    <div id="id_messague_error_cant" class="invalid-feedback"></div>
                                 </div>
                             </div>
-                                
-                            <div class="col-sm-4">
+
+                            <div class="col-sm-5">
                                 <div class="form-group  mb-5 mt-2">
                                     <img src="/img/seo/default.png" id="picture" alt="10" srcset="" width="150" class=" mb-1 img-thumbnail">
 
                                     {{Form::label('icon', 'Subir Icon', ['class'=>'mb-4'])}}
-                                    <input type="file" name="icon" class="" id="icon">
+                                    <input type="file" name="icon" class="form-control form-control-sm" id="icon">
+                                </div>
+                                <label for="basic-url" class="form-label">Plan Asignado</label>
+                                <div class="input-group mb-3">
+                                  <span class="input-group-text" id="basic-addon3">Cantidad Disponible Del Plan:</span>
+                                  <input class="form-control" type="text" value="{{$plan->cant}}  Notificaciones" id="txt_cantidad_plan" disabled readonly>
                                 </div>
 
-                                
+
+
                             </div>
                             <div class="text-center">
                                 <button class="btn btn-outline-primary ms-0 ms-sm-1 w-100 w-md-auto" type="submit">Guardar</button>
                             </div>
                             {{-- {!! Form::submit('Guardar', ['class' => 'btn_style mt-5 offset-2 form-submit']) !!} --}}
-                        
+
                         </div>
-                   
+
 
 
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -138,7 +160,7 @@
                 alert(error);
             });
     }
-    
+
     messaging.onMessage(function (payload) {
         const title = payload.notification.title;
         const options = {
@@ -150,12 +172,12 @@
         new Notification(title, options);
         // console.log(title);
         console.log(payload);
-    }); 
+    });
 </script>--}}
 {{-- script for image --}}
 <script>
-    
-    
+
+
             document.getElementById("icon").addEventListener('change',CambiarImagen);
             function CambiarImagen(event) {
                 var file= event.target.files[0];
@@ -166,7 +188,17 @@
                 reader.readAsDataURL(file);
             }
 
-           
+            $('#id_cant').on('input', function (){
+                let c_plan = $('#txt_cantidad_plan').val();
+                if(this.value>c_plan){
+                    $(this).addClass('is-invalid');
+                    //
+                    $('#id_messague_error_cant').text(`Error, la cantidad debe ser menor a {{$plan->cant}}, que es la cantidad del plan asignado`)
+                }else{
+                    $(this).removeClass('is-invalid');
+                }
+                console.log(this.value);
+            });
 </script>
 
 @endsection

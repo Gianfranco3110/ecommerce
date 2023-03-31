@@ -10,7 +10,7 @@ class PlanController extends Controller
 {
     public function index(Request $request)
     {
-        $plan =  Plan::select('plans.id','plans.name','plans.amount','users.name as nombre_user','users.last_name as segundo_nombre')
+        $plan =  Plan::select('plans.id','plans.name','plans.amount','plans.cant','users.name as nombre_user','users.last_name as segundo_nombre')
         ->join('users', 'users.id','=', 'plans.user_id')->get();
 
         return view('plan.index',compact('plan'));
@@ -38,10 +38,12 @@ class PlanController extends Controller
             'name' =>'required',
             'amount' => 'required|numeric',
             'user_id' => 'required',
+            'cant'=>'required|numeric'
         ],[],[
             'name' => 'Nombre',
             'amount' => 'Cantidad',
             'user_id' => 'Usuario',
+            'cant' => 'Cantidad',
         ]);
 
         if ($request->id)
