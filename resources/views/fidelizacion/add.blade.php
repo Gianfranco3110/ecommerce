@@ -7,9 +7,12 @@
 @if(Auth()->check())
 
 @section('css')
+    <link rel="stylesheet" href="/css/vendor/select2.min.css" />
+    <link rel="stylesheet" href="/css/vendor/select2-bootstrap4.min.css" />
 @endsection
 
 @section('js_vendor')
+    <script src="/js/vendor/select2.full.min.js"></script>
 @endsection
 
 @section('js_page')
@@ -56,14 +59,15 @@
                                         {{ Form::text('points',null,['class' => 'form-control' . ($errors->has('points') ? ' is-invalid' : ''), 'placeholder' => 'points','required']) }}
                                         {!! $errors->first('points', '<div class="invalid-feedback">:message</div>') !!}
                                     </div>
-                                    <h4>Productos</h4><br>
-                                    <div class="checkboxs" id="checkboxs">
-                                        @foreach ($product as $p)
-                                        <ul>
-                                        <li><input type="checkbox" name="productos[]" class="check" id="{{$p->id}}" value="{{$p->id}}"> {{$p->name}}</li>
-                                        </ul>
-                                        @endforeach
-                                      </div>                                    
+                                      <div class="form-group col-xs-12 col-sm-12 col-md-6 col-xl-6 col-xxl-6 mb-3">
+                                     <!-- <div class="mb-3" >Todos los productos <input type="checkbox" name="productos[]" id="productos" value="{{$product}}"/></div> -->
+                                    <label for="" class="mb-3">Productos </label>   
+                                     <select class=" required form-control round" id="select2Producto" name="productos[]">
+                                            @foreach ($product as $p)
+                                                <option value="{{ $p->id }}">{{ $p->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>                                   
                                     <!--      <div class="form-group col-xs-12 col-sm-12 col-md-6 col-xl-6 col-xxl-4 mt-5">
                                         
                                         {!! Form::label('status', 'Activo:', ['class' => 'bold ']) !!}
@@ -107,6 +111,15 @@
     setTimeout(() => {
         inicio.click();
     }, 500);
-</script>
 
+</script>
 @endif
+@push('page-script')
+<script>
+    $(document).ready(function() {
+                $('#select2Producto').select2({
+                    multiple: true,
+                });
+            })
+</script>
+@endpush

@@ -60,11 +60,13 @@ class ProductController extends Controller
         'stock','minimaVenta','stockLowLevel','stockNotification','attributes','meta_title',
         'meta_description','price','valorIva','priceIva','valorPromo','status'));
 
+
         $products = new Product();
         $products->sizes($input['tallas'],$product->id);
         $products->brands($input['marcas'],$product->id);
         $products->dimensiones($input['dimensione'],$product->id);
         $products->colors($input['color'],$product->id);
+        
 
         if($request->status == null) $products->status= 0;
         else{$products->status = 1; }

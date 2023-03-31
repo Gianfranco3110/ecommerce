@@ -34,7 +34,8 @@ class CustomerLoyaltiesController extends Controller
      */
     public function create()
     {
-        $product = Product::all();
+        $product = Product::select(['id', 'name'])
+        ->get();
         $message="";
         return view('fidelizacion.add')->with('message',$message)->with('product',$product);
     }
@@ -47,8 +48,8 @@ class CustomerLoyaltiesController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request);
-        $cl = new Customer_loyalties;
+        //dd($request->productos);
+        /* $cl = new Customer_loyalties;
         $cl->name = $request->name;
         $cl->description = $request->description;
         $cl->monto = $request->monto;
@@ -56,14 +57,19 @@ class CustomerLoyaltiesController extends Controller
         //$cl->productos = $request->productos;
         $cl->active = $request->active === null ? 0 : $request->active;
         $cl->save();
-
+        */
         if ($request->productos != null){
-            foreach ($request->productos as $p) {
-                $aux = Product::find($p);
-                $aux->customer_loyalties_id = $cl->id;
-                $aux->save();
+            foreach ($request->productos as $id) {
+                $aux = Product::where("id", $id)                      
+                ->where("customer_loyalties_id", '!=' ,'0')               
+                ->get();
+                //$aux = Product::find($p);
+                //$aux->customer_loyalties_id = $cl->id;
+                //$aux->save();
+                echo ($aux);
             }
         }
+        dd('dasd00');
 
         // "_token" => "AtDXBwaxeI2jVe5i9rP4kwmTz5DewuXviiUAJgPn"
         // "name" => "CompraFestiva"
@@ -95,7 +101,7 @@ class CustomerLoyaltiesController extends Controller
      */
     public function edit(Request $request, $id)
     {
-        $product = Product::all();
+        $product = Product::select(['id', 'name']);
         $cl = Customer_loyalties::find($id);
         $message = "";
         return view('fidelizacion.edit')->with('cl',$cl)->with('message', $message)->with('product', $product);
