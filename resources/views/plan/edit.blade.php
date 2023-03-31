@@ -43,7 +43,7 @@ $description= 'Editar Planes'
                                         {!! $errors->first('amount', '<div class="invalid-feedback">:message</div>') !!}
                                     </div>
 
-                                    <div class="form-group col-sm-12 mb-4">
+                                    <div class="form-group col-sm-6 mb-4">
                                         {{ Form::label('max_change','Usuario',['class'=>'form-label']) }}
                                         <select class="form-select digits @if ($errors->has('user_id')) is-invalid  @endif" id="user_id" name="user_id">
                                             <option value="">Seleccione El Usuario</option>
@@ -52,6 +52,11 @@ $description= 'Editar Planes'
                                             @endforeach
                                         </select>
                                         {!! $errors->first('user_id', '<div class="invalid-feedback">:message</div>') !!}
+                                    </div>
+                                    <div class="form-group col-sm-6 mb-4">
+                                        {{ Form::label('cant','Cantidad',['class'=>'form-label']) }}
+                                        {{ Form::number('cant',$plan->cant,['class' => 'form-control' . ($errors->has('cant') ? ' is-invalid' : ''), 'placeholder' => 'cantidad']) }}
+                                        {!! $errors->first('cant', '<div class="invalid-feedback">:message</div>') !!}
                                     </div>
 
                                     </div>

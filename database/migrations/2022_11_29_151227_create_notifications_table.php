@@ -21,6 +21,7 @@ class CreateNotificationsTable extends Migration
             $table->string('image', 255)->nullable();
             $table->string('icon', 255)->nullable();
             $table->dateTime('date')->nullable();
+            $table->integer('cant')->nullable();
             $table->boolean('status')->default(0)->nullable();
             $table->timestamps();
         });

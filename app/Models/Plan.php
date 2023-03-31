@@ -12,5 +12,6 @@ class Plan extends Model
         'name',
         'amount',
         'user_id',
+        'cant'
     ];
 }

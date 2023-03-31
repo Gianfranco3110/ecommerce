@@ -73,6 +73,9 @@
                                             <div class="text-muted text-medium cursor-pointer sort" data-sort="name">Nombre</div>
                                         </div>
                                         <div class="col-lg-2 d-flex flex-column pe-1 justify-content-center">
+                                            <div class="text-muted text-medium cursor-pointer sort" data-sort="email">Monto</div>
+                                        </div>
+                                        <div class="col-lg-2 d-flex flex-column pe-1 justify-content-center">
                                             <div class="text-muted text-medium cursor-pointer sort" data-sort="email">Cantidad</div>
                                         </div>
                                         <div class="col-lg-2 d-flex flex-column pe-1 justify-content-center">
@@ -93,14 +96,17 @@
                             <div class="col py-4 py-lg-0">
                                 <div class="ps-5 pe-4 h-100">
                                     <div class="row g-0 h-100 align-content-center">
-                                        <div class="col-12 col-lg-3 d-flex flex-column pe-1 mb-2 mb-lg-0 justify-content-center order-2">
+                                        <div class="col-12 col-lg-2 d-flex flex-column pe-1 mb-2 mb-lg-0 justify-content-center order-2">
                                             <div class="lh-1 text-alternate"> {{$cupon->id}}</div>
                                         </div>
-                                            <div class="col-12 col-lg-3 d-flex flex-column pe-1 mb-2 mb-lg-0 justify-content-center order-2">
+                                            <div class="col-12 col-lg-2 d-flex flex-column pe-1 mb-2 mb-lg-0 justify-content-center order-2">
                                                 <div class="lh-1 text-alternate"> {{$cupon->name}}</div>
                                             </div>
                                         <div class="col-12 col-lg-2 d-flex flex-column pe-1 mb-2 mb-lg-0 justify-content-center order-2">
                                             <div class="lh-1 text-alternate"> {{$cupon->amount}}</div>
+                                        </div>
+                                        <div class="col-12 col-lg-2 d-flex flex-column pe-1 mb-2 mb-lg-0 justify-content-center order-2">
+                                            <div class="lh-1 text-alternate"> {{$cupon->cant}}</div>
                                         </div>
                                         <div class="col-12 col-lg-2 d-flex flex-column pe-1 mb-2 mb-lg-0 justify-content-center order-4">
                                             <div class="lh-1 text-alternate">{{$cupon->nombre_user}} {{$cupon->segundo_nombre}}</div>
