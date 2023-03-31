@@ -11,7 +11,7 @@
     <title>{{$title}}</title>
     <meta name="description" content="{{$description}}"/>
     @include('_layout.head')
-   
+
 </head>
 
 <body>
@@ -33,6 +33,7 @@
     @include('_layout.footer')
 </div>
 @include('_layout.modal_settings')
+@include('frontend.change_password')
 @include('_layout.modal_search')
 @include('_layout.scripts')
 

@@ -49,6 +49,10 @@ Route::get('/offline', function () {
     return view('vendor/laravelpwa/offline');
 });
 
+Route::get('/login', function () {
+    return redirect()->route('blog');
+});
+
 Route::group([], function($id){
     Route::get('producto/{id}', [App\Http\Controllers\frontend\ProductController::class, 'index'])->name('producto.show');
 });
@@ -290,3 +294,7 @@ Route::get('/push',[App\Http\Controllers\PushController::class, 'push'])->name('
 //store a push subscriber.
 Route::post('/push',[App\Http\Controllers\PushController::class, 'store']);
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

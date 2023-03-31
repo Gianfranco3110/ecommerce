@@ -17,7 +17,7 @@
 @endsection
 
 @section('js_page')
-
+@include('frontend.change_password')
 
     <script src="/js/pages/storefront.home.js"></script>
     <script src="{{ asset('/js/base/loader.js')}}"></script>
