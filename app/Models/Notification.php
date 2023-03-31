@@ -12,8 +12,9 @@ class Notification extends Model
     public $fillable = [
         'title',
         'body',
-        'link'
-        // 'image',
-        // 'icon'
+        'link',
+        'image',
+        'icon',
+        'cant'
     ];
 }
