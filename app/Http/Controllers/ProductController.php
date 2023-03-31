@@ -55,10 +55,10 @@ class ProductController extends Controller
         ]);
 
         $input = $request->all();
-
+        //dd($input);
         $product = Product::create($request->only('name', 'category', 'subcategory','details','description','sku',
         'stock','minimaVenta','stockLowLevel','stockNotification','attributes','meta_title',
-        'meta_description','price','valorIva','priceIva','valorPromo','status'));
+        'meta_description','price','valorIva','priceIva','valorPromo','status','customer_loyalties_id'));
 
 
         $products = new Product();

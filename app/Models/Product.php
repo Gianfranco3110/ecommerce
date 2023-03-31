@@ -40,7 +40,8 @@ class Product extends Model implements HasMedia
         'valorIva',
         'productPromo',
         'productTop',
-        'valorPromo'
+        'valorPromo',
+        'customer_loyalties_id'
     ];
 
 

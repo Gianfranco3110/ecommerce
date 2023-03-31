@@ -79,6 +79,9 @@
                             <form action="{{ route('store.product') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3 w-50">
+                                <input type="hidden" class="form-control" name="customer_loyalties_id" value="0"/>
+                                <input type="hidden" class="form-control" name="status" value="1"/>
+
                                     <label class="form-label">Titulo</label>
                                     <input type="text" class="form-control" name="name" value=""
                                         placeholder="Nombre del producto" required />

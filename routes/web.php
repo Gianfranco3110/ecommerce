@@ -147,6 +147,8 @@ Route::post('plans/store', [App\Http\Controllers\PlanController::class, 'store']
 Route::get('plans/edit/{id}', [App\Http\Controllers\PlanController::class, 'edit'])->name('plan.edit');
 Route::get('plans/delet/{id}', [App\Http\Controllers\PlanController::class, 'destroy'])->name('plan.delet');
 
+//Detalle punto
+Route::get('detallePunto', [App\Http\Controllers\PlanController::class, 'index'])->name('detallePunto.index');
 
 
 // Payment Gateway
