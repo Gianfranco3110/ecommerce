@@ -49,7 +49,7 @@ class CustomerLoyaltiesController extends Controller
     public function store(Request $request)
     {
         //dd($request->productos);
-        /* $cl = new Customer_loyalties;
+         $cl = new Customer_loyalties;
         $cl->name = $request->name;
         $cl->description = $request->description;
         $cl->monto = $request->monto;
@@ -57,19 +57,18 @@ class CustomerLoyaltiesController extends Controller
         //$cl->productos = $request->productos;
         $cl->active = $request->active === null ? 0 : $request->active;
         $cl->save();
-        */
+        
         if ($request->productos != null){
             foreach ($request->productos as $id) {
-                $aux = Product::where("id", $id)                      
-                ->where("customer_loyalties_id", '!=' ,'0')               
-                ->get();
-                //$aux = Product::find($p);
-                //$aux->customer_loyalties_id = $cl->id;
-                //$aux->save();
-                echo ($aux);
+                // $aux = Product::where("id", $id)                      
+                // ->where("customer_loyalties_id", '!=' ,'0')               
+                // ->get();
+                $aux = Product::find($id);
+                $aux->customer_loyalties_id = $cl->id;
+                $aux->save();
             }
         }
-        dd('dasd00');
+        // dd('dasd00');
 
         // "_token" => "AtDXBwaxeI2jVe5i9rP4kwmTz5DewuXviiUAJgPn"
         // "name" => "CompraFestiva"
