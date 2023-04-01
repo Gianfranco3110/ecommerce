@@ -18,6 +18,7 @@ class CreatePlansTable extends Migration
             $table->string("name");
             $table->double("amount",20,2);
             $table->bigInteger('user_id')->unsigned();
+            $table->integer('cant')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });

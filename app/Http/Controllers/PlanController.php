@@ -18,7 +18,10 @@ class PlanController extends Controller
 
     public function add()
     {
-        $User = User::all()->except(auth()->user()->id);
+        $User = User::whereHas('roles', function ($query) {
+            return $query->where('name', '=', 'Cliente');
+        })->get();
+        // $User = User::all()->except(auth()->user()->id);
         return view('plan.add',compact('User'));
     }
 
