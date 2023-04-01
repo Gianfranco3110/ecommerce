@@ -20,7 +20,7 @@ class Upadate01Products extends Migration
             $table->boolean('stockNotification')->default(0); //condicional para enviar notificacion de stock low level
             $table->boolean('statuse')->default(0);
             $table->double('valorIva',8,2)->default(0);
-            $table->bigInteger('customer_loyalties_id')->unsigned()->default(0);
+            $table->unsignedBigInteger('customer_loyalties_id')->unsigned()->default(0);
             $table->foreign('customer_loyalties_id')->references('id')->on('customer_loyalties')->onDelete('cascade')->onUpdate('cascade');
 
 
