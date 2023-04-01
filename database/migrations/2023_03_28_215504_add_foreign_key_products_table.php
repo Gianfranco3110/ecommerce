@@ -14,7 +14,7 @@ class AddForeignKeyProductsTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->integer('customer_loyalties_id')->unsigned();
+            $table->bigInteger('customer_loyalties_id')->unsigned();
             $table->foreign('customer_loyalties_id')
                  ->references('id')->on('customer_loyalties')->onDelete('cascade') ;
         });

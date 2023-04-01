@@ -82,18 +82,30 @@
                                     {{Form::label('icon', 'Subir Icon', ['class'=>'mb-4'])}}
                                     <input type="file" name="icon" class="form-control form-control-sm" id="icon">
                                 </div>
-                                <label for="basic-url" class="form-label">Plan Asignado</label>
-                                <div class="input-group mb-3">
-                                  <span class="input-group-text" id="basic-addon3">Cantidad Disponible Del Plan:</span>
-                                  <input class="form-control" type="text" value="{{$plan->cant}}  Notificaciones" id="txt_cantidad_plan" disabled readonly>
-                                </div>
+                                @if ($plan == null)
+                                <div class="alert alert-success" role="alert">
+                                    <h4 class="alert-heading">Well done!</h4>
+                                    <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+                                    <hr>
+                                    <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+                                  </div>
+                                @else
+                                    <label for="basic-url" class="form-label">Plan Asignado</label>
+                                    <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon3">Cantidad Disponible Del Plan:</span>
+                                    <input class="form-control" type="text" value="  @if ($plan == null)   @else {{$plan->cant}}  @endif Notificaciones" id="txt_cantidad_plan" disabled readonly>
+                                    </div>
+                                @endif
 
 
 
                             </div>
+                            @if (!$plan == null)
                             <div class="text-center">
                                 <button class="btn btn-outline-primary ms-0 ms-sm-1 w-100 w-md-auto" type="submit">Guardar</button>
                             </div>
+
+                            @endif
                             {{-- {!! Form::submit('Guardar', ['class' => 'btn_style mt-5 offset-2 form-submit']) !!} --}}
 
                         </div>
@@ -102,6 +114,11 @@
 
                     </div>
                     </form>
+                    @if ($plan == null)
+                        <div class="text-center">
+                            <a class="btn btn-outline-success ms-0 ms-sm-1 w-100 w-md-auto" href="{{route('notification.list')}}">Ir a la lista</a>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -193,7 +210,7 @@
                 if(this.value>c_plan){
                     $(this).addClass('is-invalid');
                     //
-                    $('#id_messague_error_cant').text(`Error, la cantidad debe ser menor a {{$plan->cant}}, que es la cantidad del plan asignado`)
+                    $('#id_messague_error_cant').text(`Error, la cantidad debe ser menor a @if ($plan == null)  @else {{$plan->cant}}  @endif , que es la cantidad del plan asignado`)
                 }else{
                     $(this).removeClass('is-invalid');
                 }
