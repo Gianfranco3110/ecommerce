@@ -25,15 +25,15 @@ class CouponController extends Controller
 
     public function canjearCupon(Request $request) {
         // is0EGRKB0G
-        
-        $cupones = Coupon::all();        
+
+        $cupones = Coupon::all();
         $contar = count($cupones);
-       
+
 
    if($request->cupon){
-    
+
      for ($i=0; $i < $contar ; $i++) {
-      
+
          if($request->cupon == $cupones[$i]->codigo && $cupones[$i]->active == 1){
           // dd("entro");
           $descuento =  Cart::discount($cupones[$i]->amount,$cupones[$i]->type,$cupones[$i]->active);
@@ -59,7 +59,7 @@ class CouponController extends Controller
           //  dd("Exito, El cupon: ".$request->cupon."  Se ha agregado correctamente");
            $message = "Exito, El cupon: ".$request->cupon."  Se ha agregado correctamente";
            $code_cupon = $request->cupon;
-           
+
            // "id" => 1
            // "name" => "Probando cupon"
            // "codigo" => "is0EGRKB0G"
@@ -79,7 +79,7 @@ class CouponController extends Controller
           $hola = 1;
           $product = Product::all();
           $count = count($product);
-          for ($i=0; $i < $count  ; $i++) { 
+          for ($i=0; $i < $count  ; $i++) {
               $product[$i]->image = json_decode($product[$i]->image);
           }
 
@@ -87,12 +87,12 @@ class CouponController extends Controller
          }
      }
 
-    
+
    }
  }
 
 
- 
+
 
     /**
      * Show the form for creating a new resource.
@@ -121,7 +121,7 @@ class CouponController extends Controller
       $cupon = Coupon::find($id);
       $cupon->name = $request->name;
       // dd($request->codigo);
-      $cupon->codigo = $request->codigo; 
+      $cupon->codigo = $request->codigo;
       $cupon->max_change = $request->max_change;
       $request->start_day = date("Y-m-d", strtotime($request->start_day));
       $request->final_day = date("Y-m-d", strtotime($request->final_day));
@@ -130,9 +130,9 @@ class CouponController extends Controller
       $cupon->number_exchange = $request->number_exchange;
       $cupon->amount = $request->amount;
        $cupon->active =$request->active;
-    
+
       $cupon->type = $request->type;
-  
+
       $cupon->save();
 
       return redirect(route('cupon.index'));
@@ -154,9 +154,12 @@ class CouponController extends Controller
     public function newCupon(Request $request)
     {
       //dd($request->active);
+      if ($request->number_exchange >$request->max_change) {
+            return redirect()->route('add.cupon')->with('mensaje', "Error, El número de canjes por comprador no debe ser mayor a la cantidad disponible")->with('type',"danger");
+        }
       $cupon = new Coupon;
       $cupon->name = $request->name;
-      $cupon->codigo = $request->codigo; 
+      $cupon->codigo = $request->codigo;
       $cupon->max_change = $request->max_change;
       $request->start_day = date("Y-m-d", strtotime($request->start_day));
       $request->final_day = date("Y-m-d", strtotime($request->final_day));
@@ -166,7 +169,7 @@ class CouponController extends Controller
       $cupon->amount = $request->amount;
       $cupon->active = $request->active === null ? 0 : $request->active;
       $cupon->type = $request->type;
-      
+
       $cupon->save();
 
       return redirect(route('cupon.index'));
@@ -178,7 +181,7 @@ class CouponController extends Controller
      * @param  \App\Models\Coupon  $coupon
      * @return \Illuminate\Http\Response
      */
-   
+
 
     /**
      * Update the specified resource in storage.
@@ -210,8 +213,8 @@ class CouponController extends Controller
         $cupon = Coupon::where('codigo',$request['cupon'])
         ->where('active',1)
         ->get()->first();
-    
-  
+
+
 
              $response= ['data' => $cupon];
             } catch (\Exception $exception) {
@@ -219,8 +222,8 @@ class CouponController extends Controller
     }
       return response()->json($response);
 
-    
-      
+
+
 
     }
 }
