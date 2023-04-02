@@ -25,6 +25,53 @@
     <div class="container">
         <!-- Title and Top Buttons Start -->
         <div class="page-title-container">
+            <div class="row g-0">
+                <!-- Title Start -->
+                <div class="col-auto mb-3 mb-md-0 me-auto">
+                    <div class="w-auto sw-md-30">
+                        <a href="{{url('/dashboard')}}" class="muted-link pb-1 d-inline-block breadcrumb-back">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="acorn-icons acorn-icons-chevron-left undefined"><path d="M13 16L7.35355 10.3536C7.15829 10.1583 7.15829 9.84171 7.35355 9.64645L13 4"></path></svg>
+                            <span class="text-small align-middle">Home</span>
+                        </a>
+                        <h1 class="mb-0 pb-0 display-4" id="title">{{ $title }}</h1>
+                    </div>
+                </div>
+                <!-- Title End -->
+
+                <!-- Top Buttons Start -->
+                <div class="w-100 d-md-none"></div>
+                <div class="col-12 col-sm-6 col-md-auto d-flex align-items-end justify-content-end mb-2 mb-sm-0 order-sm-3">
+                    <a href="{{route('new.user')}}" type="button" class="btn btn-outline-primary btn-icon btn-icon-start ms-0 ms-sm-1 w-100 w-md-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="acorn-icons acorn-icons-plus undefined"><path d="M10 17 10 3M3 10 17 10"></path></svg>
+                        <span>Agregar Usuarios</span>
+                    </a>
+                    {{-- <div class="dropdown d-inline-block d-lg-none">
+                        <button type="button" class="btn btn-outline-primary btn-icon btn-icon-only ms-1" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="acorn-icons acorn-icons-sort undefined"><path d="M6 18 6 3M14 2 14 17"></path><path d="M3 5 6 2 9 5M11 15 14 18 17 15"></path></svg>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end custom-sort">
+                            <a class="dropdown-item sort" data-sort="name" href="#">Title</a>
+                            <a class="dropdown-item sort" data-sort="email" href="#">Stock</a>
+                            <a class="dropdown-item sort" data-sort="phone" href="#">Price</a>
+                            <a class="dropdown-item sort" data-sort="group" href="#">Status</a>
+                        </div>
+                    </div> --}}
+                    {{-- <div class="btn-group ms-1 check-all-container-checkbox-click">
+                        <div class="btn btn-outline-primary btn-custom-control p-0 ps-3 pe-2" data-target="#checkboxTable">
+                            <span class="form-check float-end">
+                            <input type="checkbox" class="form-check-input" id="checkAll">
+                            </span>
+                        </div>
+                        <button type="button" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-bs-offset="0,3" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <button class="dropdown-item" id="deleteChecked" type="button">Delete</button>
+                        </div>
+                    </div> --}}
+                </div>
+                <!-- Top Buttons End -->
+            </div>
+        </div>
+        {{-- <div class="page-title-container">
             <div class="row">
                 <!-- Title Start -->
                 <div class="col-auto mb-3 mb-md-0 me-auto">
@@ -43,7 +90,7 @@
                 </div>
                 <!-- Top Buttons End -->
             </div>
-        </div>
+        </div> --}}
         <!-- Title and Top Buttons End -->
 
         <!-- Controls Start -->
@@ -66,12 +113,12 @@
 
         <!-- Customers List Start -->
         <div class="row">
-        <div class="ir_derecha">
+        {{-- <div class="ir_derecha">
             @if (auth()->check())
                 <a href="{{route('new.user')}}" class="btn btn-1 btn_style" style="width: 10%;">Agregar</a>
             @endif
 
-        </div>
+        </div> --}}
             <div class="col-12 mb-5">
                 <div class="card mb-2 bg-transparent no-shadow d-none d-lg-block">
                     <div class="row g-0 sh-3">

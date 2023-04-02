@@ -24,52 +24,54 @@
     <div class="container">
         <!-- Title and Top Buttons Start -->
         <!-- Customers List Start -->
-        <h1>Nueva fidelizacion</h1>
         <h1 class="success">{{$message}}</h1>
         <div class="row">
             <div class="col-12 mb-0">
                 <div id="checkboxTable">
                     <div class="contenedor">
                     <div class="card">
+                        <div class="card-header">
+                            <h1 class="card-title">Nueva fidelizacion</h1>
+                        </div>
                         <form action="{{ route('fidel.store') }}" method="post">
                             @csrf
-                             <div class="box box-info padding-1">
-                                <div class="box-body row px-4" >
-                                    
+                             <div class="card-body box box-info padding-1">
+                                <div class=" row " >
+
                                     <div class="form-group col-sm-6 mb-4 mt-2">
-                                        {{ Form::label('name','Nombre',['class'=>'mb-4']) }}
+                                        {{ Form::label('name','Nombre',['class'=>'mb-3']) }}
                                         {{ Form::text('name',null,['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'nombre','required']) }}
                                         {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
                                     </div>
 
                                       <div class="form-group col-sm-6 mb-4 mt-2">
-                                        {{ Form::label('description','Descripción',['class'=>'mb-4']) }}
+                                        {{ Form::label('description','Descripción',['class'=>'mb-3']) }}
                                         {{ Form::text('description',null,['class' => 'form-control' . ($errors->has('description') ? ' is-invalid' : ''), 'placeholder' => 'descripcion', 'required']) }}
                                         {!! $errors->first('description', '<div class="invalid-feedback">:message</div>') !!}
                                     </div>
 
                                      <div class="form-group col-sm-6 mb-4 mt-2">
-                                        {{ Form::label('monto','Monto',['class'=>'mb-4']) }}
+                                        {{ Form::label('monto','Monto',['class'=>'mb-3']) }}
                                         {{ Form::text('monto',null,['class' => 'form-control' . ($errors->has('monto') ? ' is-invalid' : ''), 'placeholder' => 'monto','required']) }}
                                         {!! $errors->first('monto', '<div class="invalid-feedback">:message</div>') !!}
                                     </div>
 
                                      <div class="form-group col-sm-6 mb-4 mt-2">
-                                        {{ Form::label('points','Puntos',['class'=>'mb-4']) }}
+                                        {{ Form::label('points','Puntos',['class'=>'mb-3']) }}
                                         {{ Form::text('points',null,['class' => 'form-control' . ($errors->has('points') ? ' is-invalid' : ''), 'placeholder' => 'points','required']) }}
                                         {!! $errors->first('points', '<div class="invalid-feedback">:message</div>') !!}
                                     </div>
                                       <div class="form-group col-xs-12 col-sm-12 col-md-6 col-xl-6 col-xxl-6 mb-3">
                                      <!-- <div class="mb-3" >Todos los productos <input type="checkbox" name="productos[]" id="productos" value="{{$product}}"/></div> -->
-                                    <label for="" class="mb-3">Productos </label>   
+                                    <label for="" class="mb-3">Productos </label>
                                      <select class=" required form-control round" id="select2Producto" name="productos[]">
                                             @foreach ($product as $p)
                                                 <option value="{{ $p->id }}">{{ $p->name }}</option>
                                             @endforeach
                                         </select>
-                                    </div>                                   
+                                    </div>
                                     <!--      <div class="form-group col-xs-12 col-sm-12 col-md-6 col-xl-6 col-xxl-4 mt-5">
-                                        
+
                                         {!! Form::label('status', 'Activo:', ['class' => 'bold ']) !!}
                                         <label class="checkbox-inline">
                                             {!! Form::hidden('status', 0) !!}
@@ -80,26 +82,27 @@
                                     </div>
 
                                       </div>
-                                
-                                
+
+                                      <div class="w-100 px-4">
+                                        {!! Form::submit('Guardar', ['class' => ' btn btn-success mb-4 form-submit']) !!}
+                                    </div>
                             </div>
-                                    
-                          
-                            {!! Form::submit('Guardar', ['class' => 'btn_style mt-4 mb-3 offset-2 form-submit']) !!}
+
+
 
                         </form>
                     </div>
                 </div>
-             
-                
-              
+
+
+
 
                 </div>
             </div>
         </div>
         <!-- Customers List End -->
 
-    
+
     </div>
 @endsection
 
