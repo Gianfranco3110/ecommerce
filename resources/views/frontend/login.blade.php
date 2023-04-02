@@ -25,7 +25,7 @@
                         <input placeholder="Password" / id="password" type="password"
                             class="form-control pe-7 @error('password') is-invalid @enderror" name="password" required
                             autocomplete="current-password">
-                        <a class="text-small position-absolute t-3 e-3" data-bs-toggle="modal" data-bs-target="#moda_change_pass" data-bs-whatever="@mdo" href="#">olvidó?</a>
+                        <a class="text-small position-absolute t-3 e-3 btn_olvido_contraseña" data-bs-toggle="modal" data-bs-target="#moda_change_pass" data-bs-whatever="@mdo" href="#">olvidó?</a>
 
                         @error('password')
                             <span class="invalid-feedback" role="alert">
@@ -62,3 +62,9 @@
         </div>
     </div>
 </div>
+<script>
+$('.btn_olvido_contraseña').on('click',()=>{
+    console.log("HOla");
+    $('#exampleModal').modal('hide');
+});
+</script>

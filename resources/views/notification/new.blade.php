@@ -43,22 +43,20 @@
                             {{-- <div class="col-4"></div> --}}
 
                             <div class="col-sm-7">
-
-
                                 <div class="form-group col-sm-10 mb-4">
                                 @csrf
                                     {{Form::label('title', 'Titulo', ['class'=>'form-label'])}}
-                                    {{Form::text('title',old('title'), ['class' =>  'form-control' . ($errors->has('cant') ? ' is-invalid' : '')])}}
+                                    {{Form::text('title',old('title'), ['class' =>  'form-control' . ($errors->has('title') ? ' is-invalid' : '')])}}
                                     {!! $errors->first('title', '<div class="invalid-feedback">:message</div>') !!}
                                 </div>
                                 <div class="form-group col-sm-10 mb-4">
                                     {{Form::label('body', 'Descripción', ['class'=>'form-label'])}}
-                                    {{Form::text('body',null, ['class' =>  'form-control' . ($errors->has('cant') ? ' is-invalid' : '')])}}
+                                    {{Form::text('body',null, ['class' =>  'form-control' . ($errors->has('body') ? ' is-invalid' : '')])}}
                                     {!! $errors->first('body', '<div class="invalid-feedback">:message</div>') !!}
                                 </div>
                                 <div class="form-group col-sm-10 mb-4">
                                     {{Form::label('link', 'Enlace', ['class'=>'form-label'])}}
-                                    {{Form::text('link',null, ['class' =>  'form-control' . ($errors->has('cant') ? ' is-invalid' : '')])}}
+                                    {{Form::text('link',null, ['class' =>  'form-control' . ($errors->has('link') ? ' is-invalid' : '')])}}
                                     {!! $errors->first('link', '<div class="invalid-feedback">:message</div>') !!}
                                 </div>
                                 <div class="form-group col-sm-10 mb-4">
@@ -80,20 +78,22 @@
                                     <img src="/img/seo/default.png" id="picture" alt="10" srcset="" width="150" class=" mb-1 img-thumbnail">
 
                                     {{Form::label('icon', 'Subir Icon', ['class'=>'mb-4'])}}
-                                    <input type="file" name="icon" class="form-control form-control-sm" id="icon">
+                                    <input type="file" name="icon" class="form-control form-control-sm @if ($errors->has('icon')) is-invalid  @endif"  id="icon">
+                                    {!! $errors->first('icon', '<div class="invalid-feedback">:message</div>') !!}
                                 </div>
                                 @if ($plan == null)
-                                <div class="alert alert-success" role="alert">
-                                    <h4 class="alert-heading">Well done!</h4>
-                                    <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
-                                    <hr>
-                                    <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
-                                  </div>
+                                    <div class="alert alert-success" role="alert">
+                                        <h4 class="alert-heading">Well done!</h4>
+                                        <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+                                        <hr>
+                                        <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+                                    </div>
                                 @else
                                     <label for="basic-url" class="form-label">Plan Asignado</label>
                                     <div class="input-group mb-3">
                                     <span class="input-group-text" id="basic-addon3">Cantidad Disponible Del Plan:</span>
                                     <input class="form-control" type="text" value="  @if ($plan == null)   @else {{$plan->cant}}  @endif Notificaciones" id="txt_cantidad_plan" disabled readonly>
+                                    <input type="hidden" id="txt_cantidad_plan_h" value="@if ($plan == null)   @else{{$plan->cant}}@endif">
                                     </div>
                                 @endif
 
@@ -206,7 +206,7 @@
             }
 
             $('#id_cant').on('input', function (){
-                let c_plan = $('#txt_cantidad_plan').val();
+                let c_plan = $('#txt_cantidad_plan_h').val();
                 if(this.value>c_plan){
                     $(this).addClass('is-invalid');
                     //
