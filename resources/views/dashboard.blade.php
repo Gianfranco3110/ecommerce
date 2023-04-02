@@ -36,13 +36,13 @@
                     {{-- <h1 class="mb-0 pb-0 display-4" id="title">Welcome, Zayn!</h1> --}}
                    
                 
-                    <h2>Cupones</h2>
+                    <!-- <h2>Cupones</h2>
 
                     <form action="{{ route('canjear.cupon') }}" method="POST" >
                         @csrf
                             <input type="text" name="cupon" id="cupon" class="form-control" placeholder="Canjear Cupon">
                             <button type="submit" class="" id="btn_cupon">Canjear</button>
-                        </form>
+                        </form> -->
                 </div>
                 <!-- Title End -->
             </div>
@@ -54,7 +54,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="d-flex">
-                    <div class="dropdown-as-select me-3" data-setActive="false" data-childSelector="span">
+                    <!-- <div class="dropdown-as-select me-3" data-setActive="false" data-childSelector="span">
                         <a class="pe-0 pt-0 align-top lh-1 dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
                             <span class="small-title"></span>
                         </a>
@@ -66,8 +66,8 @@
                                 <a class="dropdown-item text-medium" href="#" aria-selected="false" role="tab">Yearly</a>
                             </div>
                         </div>
-                    </div>
-                    <h2 class="small-title">Stats</h2>
+                    </div> -->
+                    <!-- <h2 class="small-title">Stats</h2> -->
                 </div>
                 <div class="mb-5">
                     <div class="row g-2">
@@ -145,7 +145,7 @@
 
         <div class="row">
             <!-- Recent Orders Start -->
-            <div class="col-xl-6 mb-5">
+            <!-- <div class="col-xl-6 mb-5">
                 <h2 class="small-title">Recent Orders</h2>
                 <div class="mb-n2 scroll-out">
                     <div class="scroll-by-count" data-count="6">
@@ -326,11 +326,11 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- Recent Orders End -->
 
             <!-- Performance Start -->
-            <div class="col-xl-6 mb-5">
+            <!-- <div class="col-xl-6 mb-5">
                 <div class="d-flex">
                     <div class="dropdown-as-select me-3" data-setActive="false" data-childSelector="span">
                         <a class="pe-0 pt-0 align-top lh-1 dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
@@ -367,13 +367,13 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- Performance End -->
         </div>
 
         <div class="row gx-4 gy-5">
             <!-- Top Selling Items Start -->
-            <div class="col-xl-6 mb-5">
+            <!-- <div class="col-xl-6 mb-5">
                 <h2 class="small-title">Top Selling Items</h2>
                 <div class="scroll-out mb-n2">
                     <div class="scroll-by-count" data-count="4">
@@ -474,11 +474,11 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- Top Selling Items End -->
 
             <!-- Top Search Terms Start -->
-            <div class="col-xl-6 mb-5">
+            <!-- <div class="col-xl-6 mb-5">
                 <h2 class="small-title">Top Search Terms</h2>
                 <div class="card sh-35 h-xl-100-card">
                     <div class="card-body scroll-out h-100">
@@ -566,7 +566,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- Top Search Terms End -->
         </div>
 
@@ -574,7 +574,7 @@
             <div class="col-12 col-xxl">
                 <div class="row">
                     <!-- Activity Start -->
-                    <div class="col-xxl-6 mb-5">
+                    <!-- <div class="col-xxl-6 mb-5">
                         <h2 class="small-title">Activity</h2>
                         <div class="card sh-35">
                             <div class="card-body scroll-out h-100">
@@ -894,11 +894,11 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- Activity End -->
 
                     <!-- Recent Reviews Start -->
-                    <div class="col-xxl-6 mb-5">
+                    <!-- <div class="col-xxl-6 mb-5">
                         <h2 class="small-title">Recent Reviews</h2>
                         <div class="card sh-35">
                             <div class="card-body mb-n2 scroll-out h-100">
@@ -1013,13 +1013,13 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- Recent Reviews End -->
                 </div>
             </div>
 
             <!-- Tips Start -->
-            <div class="col-12 col-xxl-auto mb-5">
+            <!-- <div class="col-12 col-xxl-auto mb-5">
                 <h2 class="small-title">Tips</h2>
                 <div class="card h-100-card sw-xxl-40">
                     <div class="card-body row g-0">
@@ -1040,7 +1040,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- Tips End -->
         </div>
 

@@ -100,7 +100,7 @@ class CustomerLoyaltiesController extends Controller
      */
     public function edit(Request $request, $id)
     {
-        $product = Product::select(['id', 'name']);
+        $product = Product::all();
         $cl = Customer_loyalties::find($id);
         $message = "";
         return view('fidelizacion.edit')->with('cl',$cl)->with('message', $message)->with('product', $product);
@@ -131,6 +131,16 @@ class CustomerLoyaltiesController extends Controller
         // "monto" => "500"
         // "points" => "30"
         // "productos" => "[{"id":"1","elemento":"Lampara"},{"id":"2","elemento":"Metras"}]"
+        if ($request->productos != null){
+            foreach ($request->productos as $id_) {
+                // $aux = Product::where("id", $id)                      
+                // ->where("customer_loyalties_id", '!=' ,'0')               
+                // ->get();
+                $aux = Product::find($id_);
+                $aux->customer_loyalties_id = $customerLoyalty->id;
+                $aux->save();
+            }
+        }
         $product = Product::all();
         $cl = Customer_loyalties::find($id);
         $message = "Datos actualizados correctamente";

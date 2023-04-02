@@ -305,7 +305,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('catalago-premios.index')}}">
+                        <a href="{{route('detail.index')}}">
                             <span class="label">Detalle de puntos</span>
                         </a>
                     </li>

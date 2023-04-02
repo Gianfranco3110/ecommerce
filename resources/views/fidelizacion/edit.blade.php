@@ -7,9 +7,13 @@
 @if(Auth()->check())
 
 @section('css')
+    <link rel="stylesheet" href="/css/vendor/select2.min.css" />
+    <link rel="stylesheet" href="/css/vendor/select2-bootstrap4.min.css" />
 @endsection
 
 @section('js_vendor')
+<script src="/js/vendor/select2.full.min.js"></script>
+
 @endsection
 
 @section('js_page')
@@ -43,18 +47,17 @@
                                  <h2>Puntos<br><br>
                                     <input class="form-control" type="text" name="points" value="{{$cl->points}}" placeholder="Puntos" Required>
                                 </h2> 
-                             <h2>Productos<br><br>
-                                    <div class="checkboxs" id="checkboxs">
-                                        @foreach ($product as $p)
-                                        <span><input type="checkbox" class="check" id="{{$p->id}}" value="{{$p->name}}"> {{$p->name}}</span>
-                                        @endforeach
-                                      </div>
-                                    <input style="position:absolute; filter:opacity(0); transform:translateX(-5000px);" type="text" name="productos" id="ghostJson">
-                                 </h2>
+                                <div class="form-group col-xs-12 col-sm-12 col-md-6 col-xl-6 col-xxl-6 mb-3">
+                                     <!-- <div class="mb-3" >Todos los productos <input type="checkbox" name="productos[]" id="productos" value="{{$product}}"/></div> -->
+                                    <label for="" class="mb-3">Productos </label>   
+                                     <select class=" required form-control round" id="select2Producto" name="productos[]">
+                                            @foreach ($product as $p)
+                                                <option value="{{ $p->id }}">{{ $p->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div> 
                             
-                                 <h2>Activo<br><br>
-                                    <input type="checkbox" name="status" id="status" value="1">
-                                 </h2>
+                                    <label for="">Activo<input type="checkbox" name="active" id="active" value="1"/></label>
                             <button class="btn_style" type="submit" class="form-submit">Guardar</button>
                         </form>
                     </div>
@@ -211,3 +214,12 @@
 </script>
 
 @endif
+@push('page-script')
+<script>
+    $(document).ready(function() {
+                $('#select2Producto').select2({
+                    multiple: true,
+                });
+            })
+</script>
+@endpush
