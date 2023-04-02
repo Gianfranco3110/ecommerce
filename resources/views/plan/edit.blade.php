@@ -20,12 +20,14 @@ $description= 'Editar Planes'
 <div class="container">
     <!-- Title and Top Buttons Start -->
     <!-- Customers List Start -->
-    <h1>Editar Plan</h1>
     <div class="row">
         <div class="col-12 mb-0">
             <div id="checkboxTable">
                 <div class="contenedor">
                     <div class="card">
+                        <div class="card-header">
+                            <h1 class="card-title">Editar Plan</h1>
+                        </div>
                         <form action="{{ route('plan.store') }}" method="post">
                             @csrf
                             <div class="box box-info padding-1">
@@ -62,13 +64,11 @@ $description= 'Editar Planes'
                                     </div>
                                 </div>
 
+                                <div class="w-100 px-4">
 
+                                    {!! Form::submit('Guardar', ['class' => 'btn btn-success mt-0 mb-4  form-submit']) !!}
+                                </div>
                             </div>
-
-
-
-                            {!! Form::submit('Guardar', ['class' => 'btn_style mt-4 mb-3 offset-2 form-submit']) !!}
-
                         </form>
                     </div>
                 </div>

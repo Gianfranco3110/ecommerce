@@ -5,7 +5,7 @@ $description= 'Ecommerce Customer List Page'
 @endphp
 @extends('layout',['html_tag_data'=>$html_tag_data, 'title'=>$title, 'description'=>$description])
 @if(Auth()->check())
-@hasanyrole('super admin')
+@hasanyrole('Super Admin')
 @section('css')
 @endsection
 
@@ -31,7 +31,7 @@ $description= 'Ecommerce Customer List Page'
             </div>
             <div style="width: 100%; height: 10vh;"></div>
             <!-- Title End -->
-            
+
             <!-- Top Buttons Start -->
             {{-- <div class="w-100 d-md-none"></div>
             <div class="col-12 col-sm-6 col-md-auto d-flex align-items-end justify-content-end mb-2 mb-sm-0 order-sm-3">
@@ -44,14 +44,14 @@ $description= 'Ecommerce Customer List Page'
                 <!-- Top Buttons End -->
             </div> --}}
             <div class="ir_derecha">
-                
+
                 @hasanyrole('super admin')
                 <a href="{{route('shipping-costs.create')}}" class="btn btn-1 btn_style" style="width: 10%;">Agregar</a>
                @endhasanyrole
-              
+
             </div>
         </div>
-        
+
         <div class="row g-0">
             <div class="col-12 mb-5">
                 <!-- List Items Start -->
@@ -77,25 +77,25 @@ $description= 'Ecommerce Customer List Page'
                                         <div class="col-lg-1 d-flex flex-column pe-1 justify-content-center">
                                             <div class="text-muted text-medium cursor-pointer sort" data-sort="group">Valor</div>
                                         </div>
-                                        
-                                                             
-                                    
+
+
+
 
                                         <div class="col-lg-1 d-flex flex-column pe-1 justify-content-center">
                                             <div class="text-muted text-medium cursor-pointer sort" data-sort="group">Estatus</div>
                                         </div>
                                     </div>
-                                    
-                                    
-                                    
+
+
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                
-                
+
+
+
                 {{--  "name" => "ComprasExtra"
                 "description" => "por compras mayores ha 100 mil pesos"
                 "monto" => 10.0
@@ -103,12 +103,12 @@ $description= 'Ecommerce Customer List Page'
                 "productos" => "{}"
                 "active" => 1
                 --}}
-                
+
                 <!-- Items Container Start -->
                 @foreach ($shippingCosts as $shippingCost)
                 <div class="card mb-2">
                     <div class="row g-0 h-100 sh-lg-9 position-relative">
-                        
+
                         <div class="col py-4 py-lg-0">
                             <div class="ps-5 pe-4 h-100">
                                 <div class="row g-0 h-100 align-content-center">
@@ -124,18 +124,18 @@ $description= 'Ecommerce Customer List Page'
                                     <div class="col-12 col-lg-1 d-flex flex-column pe-1 mb-2 mb-lg-0 align-items-start justify-content-center order-5">
                                         <span class="lh-1 text-alternate">{{$shippingCost->valor}}</span>
                                     </div>
-     
-                                  
-                                
+
+
+
                                     <div class="col-12 col-lg-1 d-flex flex-column pe-1 mb-2 mb-lg-0 align-items-start justify-content-center order-5">
                                         <span class="lh-1 text-alternate">{{$shippingCost->active}}</span>
-                                        
+
                                     </div>
-                                    
+
                                     <div class="col-1 d-flex flex-column mb-2 mb-lg-0 align-items-end order-2 order-lg-last justify-content-lg-center">
-                                        
+
                                         <div class="btn-group ms-1 check-all-container">
-                                       
+
                                             <button
                                             type="button"
                                             class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split"
@@ -147,24 +147,24 @@ $description= 'Ecommerce Customer List Page'
                                             <div class="dropdown-menu dropdown-menu-end">
                                                 <a class="dropdown-item" href="{{route('shipping-costs.edit',$shippingCost->id)}}">
                                                     <span class="align-middle d-inline-block">Editar</span>
-                                                </a>                                              
+                                                </a>
                                                 {{-- <a class="dropdown-item" href="{{route('payment.delete',['id'=>$city->id])}}">
                                                     <span class="align-middle d-inline-block">Delete</span>
                                                 </a> --}}
                                             </div>
                                         </div>
                                     </div>
-                                   
-                                    
+
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 @endforeach
-                
+
                 <!-- Items Container Start -->
-                
+
                 <!-- List Items End -->
             </div>
         </div>
@@ -193,3 +193,4 @@ $description= 'Ecommerce Customer List Page'
 </script>
 
 @endif
+
