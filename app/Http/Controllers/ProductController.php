@@ -22,12 +22,16 @@ class ProductController extends Controller
         $products = Product::with(['media'])->get();
         $products = Product::ordenar($products)->paginate(10);
         $count = count($products);
-        for ($i=0; $i < $count  ; $i++) {
-            $products[$i]->image = json_decode($products[$i]->image);
+        $data_img = [];
+        $data_img_iten = [];
+
+        foreach($products as $i=> $val) {
+            $data_img_iten[$i] = json_decode($products[$i]->image);
+            $data_img[$val->id] = $data_img_iten[$i][0];
         }
         // $products->image = json_decode($products->image);
-        //   dd($products[0]);
-        return view('products.list')->with('products', $products);
+        //   dd($data_img);
+        return view('products.list',compact('data_img','products'));
     }
 
     public function newProduct()
@@ -66,7 +70,7 @@ class ProductController extends Controller
         $products->brands($input['marcas'],$product->id);
         $products->dimensiones($input['dimensione'],$product->id);
         $products->colors($input['color'],$product->id);
-        
+
 
         if($request->status == null) $products->status= 0;
         else{$products->status = 1; }
