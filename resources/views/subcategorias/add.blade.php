@@ -21,27 +21,29 @@ $description= 'Ecommerce Customer List Page'
 <div class="container">
     <!-- Title and Top Buttons Start -->
     <!-- Customers List Start -->
-    <h1>Agregar SubCategoria</h1>
     <h1 class="success">{{$message}}</h1>
     <div class="row">
         <div class="col-12 mb-0">
             <div id="checkboxTable">
                 <div class="contenedor">
                     <div class="card">
+                        <div class="card-header">
+                            <h1 class="card-title">Agregar SubCategoria</h1>
+                        </div>
                         <form action="{{ route('subcat.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
-                            <div class="box box-info padding-1">
-                                <div class="box-body row px-4" >
+                            <div class="box card-body box-info padding-1">
+                                <div class=" row " >
 
                                     <div class="form-group col-sm-6 mb-4 mt-5">
-                                        {{ Form::label('name','Nombre',['class'=>'mb-4']) }}
+                                        {{ Form::label('name','Nombre',['class'=>'mb-3']) }}
                                         {{ Form::text('name',null,['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'nombre']) }}
                                         {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
                                     </div>
 
 
                                     <div class="form-group col-sm-6 mb-2 mt-5">
-                                        {{ Form::label('categoria_id','Categoria',['class'=>'mb-4']) }}
+                                        {{ Form::label('categoria_id','Categoria',['class'=>'mb-3']) }}
                                         {{ Form::select('categoria_id',$categories,null, ['class' => 'form-control' . ($errors->has('categoria_id') ? ' is-invalid' : ''), 'placeholder' => 'Categoria']) }}
                                         {!! $errors->first('categoria_id', '<div class="invalid-feedback">:message</div>') !!}
                                     </div>
@@ -66,7 +68,10 @@ $description= 'Ecommerce Customer List Page'
 
                             </div>
 
-                            {!! Form::submit('Guardar', ['class' => 'btn_style mt-4 mb-3 offset-2 form-submit']) !!}
+
+                            <div class="w-100 px-4">
+                                {!! Form::submit('Guardar', ['class' => ' btn btn-success mb-4 form-submit']) !!}
+                            </div>
 
                         </form>
                     </div>

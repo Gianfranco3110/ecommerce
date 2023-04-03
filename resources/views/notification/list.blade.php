@@ -24,9 +24,9 @@
                 <!-- Title Start -->
                 <div class="col-auto mb-3 mb-md-0 me-auto">
                     <div class="w-auto sw-md-30">
-                        <a href="#" class="muted-link pb-1 d-inline-block breadcrumb-back">
+                        <a href="{{url('/dashboard')}}" class="muted-link pb-1 d-inline-block breadcrumb-back">
                             <i data-acorn-icon="chevron-left" data-acorn-size="13"></i>
-                            <span class="text-small align-middle">Lista notificaciones</span>
+                            <span class="text-small align-middle">Home</span>
                         </a>
                         <h1 class="mb-0 pb-0 display-4" id="title">{{ $title }}</h1>
                     </div>

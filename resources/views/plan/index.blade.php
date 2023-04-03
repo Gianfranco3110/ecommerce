@@ -29,31 +29,27 @@
                 <!-- Title Start -->
                 <div class="col-auto mb-3 mb-md-0 me-auto">
                     <div class="w-auto sw-md-30">
-                        <a href="#" class="muted-link pb-1 d-inline-block breadcrumb-back">
+                        <a href="{{url('/dashboard')}}" class="muted-link pb-1 d-inline-block breadcrumb-back">
                             <i data-acorn-icon="chevron-left" data-acorn-size="13"></i>
                             <span class="text-small align-middle">Home</span>
                         </a>
                         <h1 class="mb-0 pb-0 display-4" id="title">{{ $title }}</h1>
                     </div>
                 </div>
-                <div style="width: 100%; height: 10vh;"></div>
-                <!-- Title End -->
-
-                <!-- Top Buttons Start -->
-                {{-- <div class="w-100 d-md-none"></div>
-                <div class="col-12 col-sm-6 col-md-auto d-flex align-items-end justify-content-end mb-2 mb-sm-0 order-sm-3">
-                    <a href="{{route('new.product')}}" type="button" class="btn btn-outline-primary btn-icon btn-icon-start ms-0 ms-sm-1 w-100 w-md-auto">
+                {{-- <div style="width: 100%; height: 10vh;">
+                    <a href="{{route('notification.new')}}" type="button" class="btn btn-outline-primary btn-icon btn-icon-start ms-0 ms-sm-1 w-100 w-md-auto">
                         <i data-acorn-icon="plus"></i>
                         <span>Agregar</span>
                     </a>
-                    <div class="dropdown d-inline-block d-lg-none">
+                </div>   --}}
+
+                <div class="col-12 col-sm-6 col-md-auto d-flex align-items-end justify-content-end mb-2 mb-sm-0 order-sm-3">
+                    <a href="{{route('plan.add')}}" type="button" class="btn btn-outline-primary btn-icon btn-icon-start ms-0 ms-sm-1 w-100 w-md-auto">
+                        <i data-acorn-icon="plus"></i>
+                        <span>Agregar</span>
+                    </a>
+                    <div class="dropdown d-inline-block d-lg-none"></div>
                 </div>
-                <!-- Top Buttons End -->
-            </div> --}}
-            <div class="ir_derecha">
-
-                <a href="{{route('plan.add')}}" class="btn btn-1 btn_style" style="width: 10%;">Agregar</a>
-
             </div>
         </div>
 

@@ -252,9 +252,9 @@
                             <span class="label">Detail</span>
                         </a>
                     </li> --}}
-                    
-                    
-                      
+
+
+
                     <li>
                         <a href="{{route('cat.index')}}">
                             <span class="label">Categorias</span>
@@ -265,7 +265,7 @@
                             <span class="label">Sub categorias</span>
                         </a>
                     </li>
-                    
+
                     {{-- <li>
                         <a href="/Products/Detail">
                             <span class="label">modelo</span>
@@ -309,8 +309,8 @@
                             <span class="label">Detalle de puntos</span>
                         </a>
                     </li>
-                    
-                    
+
+
                     {{-- <li>
                         <a href="/Products/Detail">
                             <span class="label">modelo</span>

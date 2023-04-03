@@ -31,26 +31,22 @@
                         <h1 class="mb-0 pb-0 display-4" id="title">{{ $title }}</h1>
                     </div>
                 </div>
-                <div style="width: 100%; height: 10vh;"></div>
                 <!-- Title End -->
 
                 <!-- Top Buttons Start -->
-                {{-- <div class="w-100 d-md-none"></div>
+                <div class="w-100 d-md-none"></div>
                 <div class="col-12 col-sm-6 col-md-auto d-flex align-items-end justify-content-end mb-2 mb-sm-0 order-sm-3">
-                    <a href="{{route('new.product')}}" type="button" class="btn btn-outline-primary btn-icon btn-icon-start ms-0 ms-sm-1 w-100 w-md-auto">
+                    <a href="{{route('add.cupon')}}" type="button" class="btn btn-outline-primary btn-icon btn-icon-start ms-0 ms-sm-1 w-100 w-md-auto">
                         <i data-acorn-icon="plus"></i>
                         <span>Agregar</span>
                     </a>
                     <div class="dropdown d-inline-block d-lg-none">
                 </div>
                 <!-- Top Buttons End -->
-            </div> --}}
-            <div class="ir_derecha">
-            
-                <a href="{{route('add.cupon')}}" class="btn btn-1 btn_style" style="width: 10%;">Agregar</a>
-               
             </div>
+
         </div>
+    </div>
 
         <div class="row g-0">
             <div class="col-12 mb-5">
@@ -93,7 +89,7 @@
                     @foreach ($cupones as $cupon)
                     <div class="card mb-2">
                         <div class="row g-0 h-100 sh-lg-9 position-relative">
-                           
+
                             <div class="col py-4 py-lg-0">
                                 <div class="ps-5 pe-4 h-100">
                                     <div class="row g-0 h-100 align-content-center">
@@ -132,7 +128,7 @@
                                                 <div class="dropdown-menu dropdown-menu-end">
                                                     <a class="dropdown-item" href="{{route('cupon.edit',['id'=>$cupon->id])}}">
                                                         <span class="align-middle d-inline-block">Editar</span>
-                                                    </a>                                              
+                                                    </a>
                                                     {{-- <a class="dropdown-item" href="{{route('payment.delete',['id'=>$cupon->id])}}">
                                                         <span class="align-middle d-inline-block">Delete</span>
                                                     </a> --}}
@@ -146,7 +142,7 @@
                         </div>
                     </div>
                     @endforeach
-              
+
                     <!-- Items Container Start -->
 
                     <!-- List Items End -->

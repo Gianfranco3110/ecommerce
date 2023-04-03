@@ -20,7 +20,6 @@ $description= 'Añadir cupones'
 <div class="container">
     <!-- Title and Top Buttons Start -->
     <!-- Customers List Start -->
-    <h1>Agregar Cupon</h1>
     <h1 class="success">{{$message}}</h1>
     @if (session('mensaje'))
     <div class="alert alert-{{session('type')}}">
@@ -32,6 +31,9 @@ $description= 'Añadir cupones'
             <div id="checkboxTable">
                 <div class="contenedor">
                     <div class="card">
+                        <div class="card-header">
+                            <h1 class="card-title">Agregar Cupon</h1>
+                        </div>
                         <form action="{{ route('new.cupon') }}" method="post">
 
                             @csrf
@@ -107,12 +109,13 @@ $description= 'Añadir cupones'
                                     </div>
                                 </div>
 
-
+                                <div class="w-100 px-4 mt-4">
+                                    {!! Form::submit('Guardar', ['class' => ' btn btn-success  mb-4 form-submit']) !!}
+                                </div>
                             </div>
 
 
 
-                            {!! Form::submit('Guardar', ['class' => 'btn_style mt-4 mb-3 offset-2 form-submit']) !!}
 
                         </form>
                     </div>
