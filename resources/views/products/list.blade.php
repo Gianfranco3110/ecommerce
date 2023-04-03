@@ -45,7 +45,7 @@
                             <i data-acorn-icon="plus"></i>
                             <span>Agregar</span>
                         </a>
-                        <div class="dropdown d-inline-block d-lg-none">
+                       
                     </div>
                     <!-- Top Buttons End -->
                 </div>
@@ -181,7 +181,7 @@
                     <!-- Items Container Start -->
                     @foreach ($products as $product)
                         <div class="card mb-2">
-                            <div class="row g-0 h-100 sh-lg-9 position-relative">
+                            <div class="row g-0 h-100 sh-lg-9 position-relative mt-3">
                                 <a href="#" class="col-auto position-relative">
                                     <img src="{{ asset('img/product/product_id_'.$product->id.'/'.$data_img[$product->id]) }}" alt="product" class="w-img-modi card-img card-img-horizontal  h-100">
                                 </a>

@@ -57,8 +57,10 @@
                                         </select>
                                     </div> 
                             
-                                    <label for="">Activo<input type="checkbox" name="active" id="active" value="1"/></label>
-                            <button class="btn_style" type="submit" class="form-submit">Guardar</button>
+                                    <label  class="checkbox-inline"for="">Activo<input type="checkbox" name="active" id="active" value="1"/></label>
+                                    <div class="">
+                                        <button class="btn btn-outline-primary ms-0 ms-sm-1 w-100 w-md-auto" type="submit" class="form-submit">Guardar</button>
+                                    </div>
                         </form>
                     </div>
                 </div>

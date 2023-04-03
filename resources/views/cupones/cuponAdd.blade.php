@@ -109,8 +109,8 @@ $description= 'Añadir cupones'
                                     </div>
                                 </div>
 
-                                <div class="w-100 px-4 mt-4">
-                                    {!! Form::submit('Guardar', ['class' => ' btn btn-success  mb-4 form-submit']) !!}
+                                <div class="text-center">
+                                    {!! Form::submit('Guardar', ['class' => 'btn btn-outline-primary ms-0 ms-sm-1 w-100 w-md-auto']) !!}
                                 </div>
                             </div>
 

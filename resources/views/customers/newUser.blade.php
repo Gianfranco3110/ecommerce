@@ -87,8 +87,8 @@ $description= 'Ecommerce Customer List Page'
                         </div>
                     </div>
 
-                    <div class="w-100 mt-5">
-                        <button type="submit" class="btn btn-success">Guardar</button>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-outline-primary ms-0 ms-sm-1 w-100 w-md-auto">Guardar</button>
                     </div>
 
                     {{-- {!! Form::submit('Guardar', ['class' => 'btn btn-success mt-5 offset-2 form-submit']) !!} --}}
