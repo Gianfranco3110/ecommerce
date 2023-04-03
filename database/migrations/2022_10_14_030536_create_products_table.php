@@ -18,14 +18,14 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->integer('stock');
             $table->double('price');
-            $table->string('status');
+            $table->boolean('status')->default(true);
             $table->string('category');
             $table->string('subcategory');
             $table->longText('description');
             $table->longText('details');
             $table->string('sku');
             $table->string('barcode');
-            $table->longText('image');
+            $table->longText('image')->nullable();
             $table->string('attributes');
             $table->string('meta_title');
             $table->string('meta_description');
