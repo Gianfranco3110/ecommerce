@@ -45,7 +45,7 @@
                 <!-- Top Buttons End -->
             </div>
         </div>
-
+<br/><br/><br/><br/><br/>
         <div class="row g-0">
             <div class="col-12 mb-5">
                 <!-- List Items Start -->
@@ -57,16 +57,16 @@
                                 <div class="ps-5 pe-4 h-100">
                                     <div class="row g-0 h-100 align-content-center custom-sort">
                                         <div class="col-lg-4 d-flex flex-column mb-lg-0 pe-3 d-flex">
-                                            <div class="text-muted text-medium cursor-pointer sort" data-sort="name">Title</div>
+                                            <div class="text-muted text-medium cursor-pointer sort" data-sort="name">Titulo</div>
                                         </div>
                                         <div class="col-lg-2 d-flex flex-column pe-1 justify-content-center">
                                             <div class="text-muted text-medium cursor-pointer sort" data-sort="email">Stock</div>
                                         </div>
                                         <div class="col-lg-3 d-flex flex-column pe-1 justify-content-center">
-                                            <div class="text-muted text-medium cursor-pointer sort" data-sort="phone">Price</div>
+                                            <div class="text-muted text-medium cursor-pointer sort" data-sort="phone">Precio</div>
                                         </div>
                                         <div class="col-lg-2 d-flex flex-column pe-1 justify-content-center">
-                                            <div class="text-muted text-medium cursor-pointer sort" data-sort="group">Status</div>
+                                            <div class="text-muted text-medium cursor-pointer sort" data-sort="group">Estatus</div>
                                         </div>
                                     </div>
                                 </div>

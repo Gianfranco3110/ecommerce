@@ -66,7 +66,7 @@
                                             <div class="text-muted text-medium cursor-pointer sort" data-sort="name">Nombre</div>
                                         </div>
                                         <div class="col-lg-2 d-flex flex-column pe-1 justify-content-center">
-                                            <div class="text-muted text-medium cursor-pointer sort" data-sort="email">Codigo</div>
+                                            <div class="text-muted text-medium cursor-pointer sort" data-sort="email">Código</div>
                                         </div>
                                         <div class="col-lg-2 d-flex flex-column pe-1 justify-content-center">
                                             <div class="text-muted text-medium cursor-pointer sort" data-sort="phone">Maximo de Canjes</div>
