@@ -86,20 +86,16 @@ $description= 'Ecommerce Customer List Page'
 
                         </div>
                     </div>
-
-
-
-
-                    {!! Form::submit('Actualizar', ['class' => 'btn_style mt-5 offset-2 form-submit']) !!}
-
-
                     {{-- <input type="text" name="name">
                     <input type="text" name="last_name">
                     <input type="text" name="email">
                     <input type="password" name="password">
                     <input type="text" name="whatsapp"> --}}
-
+                    
                 </form>
+            </div>
+            <div class='mt-4'>
+                {!! Form::submit('Guardar', ['class' => 'btn btn-outline-primary ms-0 ms-sm-1 w-100 w-md-auto form-submit']) !!}
             </div>
         </div>
 

@@ -32,15 +32,16 @@ $description= 'Ecommerce Product List Page'
                     <h1 class="mb-0 pb-0 display-4" id="title">Catalago de premios</h1>
                 </div>
             </div>
-                        
-                        
-                        <div class="ir_derecha">
-                            
-                            @hasanyrole('super admin')
-                            <a href="{{route('catalago-premios.create')}}" class="btn btn-1 btn_style" style="width: 10%;">Agregar</a>
-                            @endhasanyrole
-                            
-                        </div>
+            @role('Super Admin|Admin')     
+            <div class="col-12 col-sm-6 col-md-auto d-flex align-items-end justify-content-end mb-2 mb-sm-0 order-sm-3">
+                        <a href="{{route('catalago-premios.create')}}" type="button" class="btn btn-outline-primary btn-icon btn-icon-start ms-0 ms-sm-1 w-100 w-md-auto">
+                            <i data-acorn-icon="plus"></i>
+                            <span>Agregar</span>
+                        </a>
+                       
+                    </div>
+                    @endrole
+     
                     </div>
                 </div>
                 @if ($message = Session::get('success'))
@@ -48,8 +49,6 @@ $description= 'Ecommerce Product List Page'
                     <p>{{ $message }}</p>
                 </div>
                 @endif
-
-
                   <div class="row g-0">
             <div class="col-12 mb-5">
                 <!-- List Items Start -->

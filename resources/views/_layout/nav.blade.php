@@ -198,12 +198,12 @@
                     <span class="label">Pantalla Principal</span>
                 </a>
             </li>
-           <li>
+           <!-- <li>
                 <a href="{{route('notification.list')}}">
                     <i data-acorn-icon="bell" class="icon" data-acorn-size="18"></i>
                     <span class="label">Notificaciones</span>
                 </a>
-            </li>
+            </li> -->
             <li>
                 <a href="{{route('plan.index')}}">
                     <i data-acorn-icon="bell" class="icon" data-acorn-size="18"></i>
@@ -305,7 +305,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('catalago-premios.index')}}">
+                        <a href="{{route('detail.index')}}">
                             <span class="label">Detalle de puntos</span>
                         </a>
                     </li>

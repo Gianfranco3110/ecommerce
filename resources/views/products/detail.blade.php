@@ -1,6 +1,6 @@
 @php
 $html_tag_data = [];
-$title = 'Productos';
+$title = 'Editar productos';
 $description= 'Detalles de productos'
 @endphp
 @extends('layout',['html_tag_data'=>$html_tag_data, 'title'=>$title, 'description'=>$description])
@@ -388,7 +388,7 @@ $description= 'Detalles de productos'
                 </div>
             </div>
             <!-- Price End -->
-                     {!! Form::submit('Guardar Cambios', ['class' => 'btn_style mt-5 offset-2 form-submit']) !!}
+                     {!! Form::submit('Guardar', ['class' => 'btn btn-outline-primary ms-0 ms-sm-1 w-100 w-md-auto']) !!}
 
         </form>
 
