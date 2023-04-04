@@ -144,7 +144,8 @@ class CustomerLoyaltiesController extends Controller
         $product = Product::all();
         $cl = Customer_loyalties::find($id);
         $message = "Datos actualizados correctamente";
-        return view('fidelizacion.edit')->with('cl',$cl)->with('message', $message)->with('product', $product);
+        $show = true;
+        return redirect(route('fidel.index'))->with('message', $message);
     }
 
     /**
