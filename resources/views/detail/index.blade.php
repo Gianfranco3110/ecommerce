@@ -85,6 +85,7 @@
                     </div>
 
                     <!-- Items Container Start -->
+                    @foreach ($userInfo as $user)
                     <div class="card mb-2">
                         <div class="row g-0 h-100 sh-lg-9 position-relative">
 
@@ -92,19 +93,19 @@
                                 <div class="ps-5 pe-4 h-100">
                                     <div class="row g-0 h-100 align-content-center">
                                         <div class="col-12 col-lg-2 d-flex flex-column pe-1 mb-2 mb-lg-0 justify-content-center order-2">
-                                            <div class="lh-1 text-alternate"> 1</div>
+                                            <div class="lh-1 text-alternate"> {{$user->id}}</div>
                                         </div>
                                             <div class="col-12 col-lg-2 d-flex flex-column pe-1 mb-2 mb-lg-0 justify-content-center order-2">
-                                                <div class="lh-1 text-alternate"> 20</div>
+                                                <div class="lh-1 text-alternate"> {{$user->points}}</div>
                                             </div>
                                         <div class="col-12 col-lg-2 d-flex flex-column pe-1 mb-2 mb-lg-0 justify-content-center order-2">
-                                            <div class="lh-1 text-alternate"> 40</div>
+                                            <div class="lh-1 text-alternate"> {{$user->pointsCanjeado}}</div>
                                         </div>
                                         <div class="col-12 col-lg-2 d-flex flex-column pe-1 mb-2 mb-lg-0 justify-content-center order-2">
-                                            <div class="lh-1 text-alternate"> +584141578602</div>
+                                            <div class="lh-1 text-alternate"> {{$user->whatsapp}}</div>
                                         </div>
                                         <div class="col-12 col-lg-2 d-flex flex-column pe-1 mb-2 mb-lg-0 justify-content-center order-4">
-                                            <div class="lh-1 text-alternate">Gianfranco</div>
+                                            <div class="lh-1 text-alternate">{{$user->email}}</div>
                                         </div>
 
                                     </div>
@@ -112,7 +113,7 @@
                             </div>
                         </div>
                     </div>
-
+                    @endforeach
                     <!-- Items Container Start -->
 
                     <!-- List Items End -->

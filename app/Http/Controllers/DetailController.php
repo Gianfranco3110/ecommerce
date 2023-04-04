@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\detail;
+use App\Models\User;
+use DB;
+
 use Illuminate\Http\Request;
 
 class DetailController extends Controller
@@ -14,7 +17,10 @@ class DetailController extends Controller
      */
     public function index()
     {
-        return view('detail.index');
+        $userInfo = User::select(['id','points','pointsCanjeado','whatsapp','email'])->where('pointsCanjeado', '>','0')->get();
+        // dd($userInfo);
+        return view('detail.index',compact('userInfo'));
+
 
     }
 
