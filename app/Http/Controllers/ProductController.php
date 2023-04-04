@@ -106,6 +106,16 @@ class ProductController extends Controller
 
         return redirect()->route('product.index')->with('mensaje', 'Producto Agregado Correctamente');
     }
+
+    public function store_img_edit(Request $request)
+    {
+        $image = $request->file('file');
+
+        $imageName = time().'.'.$image->extension();
+        // $image->move(public_path('images'),$imageName);
+
+        return response()->json(['success'=>$imageName]);
+    }
     public function productUpdate(request $request, $id)
     {
         $request->validate([

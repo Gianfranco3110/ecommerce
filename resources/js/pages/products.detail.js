@@ -124,13 +124,14 @@ class ProductsDetail {
 
     if (document.getElementById('dropzoneProductGallery')) {
       new Dropzone('#dropzoneProductGallery', {
-        url: 'https://httpbin.org/post',
+        url: '/storeProducto/img_edit',
         thumbnailWidth: 600,
         thumbnailHeight: 430,
         previewTemplate: DropzoneTemplates.columnPreviewImageTemplate,
         init: function () {
           this.on('success', function (file, responseText) {
             console.log(responseText);
+            console.log(file);
           });
 
           // If you only have access to the original image sizes on your server,

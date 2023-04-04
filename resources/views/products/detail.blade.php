@@ -20,6 +20,7 @@ $description= 'Detalles de productos'
 @endsection
 
 @section('js_vendor')
+
 <script src="/js/vendor/imask.js"></script>
 <script src="/js/vendor/quill.min.js"></script>
 <script src="/js/vendor/quill.active.js"></script>
@@ -457,6 +458,57 @@ $description= 'Detalles de productos'
                             </div>
                         </div>
                     </div>
+                    <input type="hidden" id="data_img" value="{{json_encode($array_img)}}">
+                    <div class="mb-5">
+                        <h2 class="small-title">Galeria del producto</h2>
+                        <div class="card">
+                            <div class="card-body">
+                                <form action="{{ route('storeimg.product') }}" method="post" enctype="multipart/form-data" id="dropzoneProductGallery" class="dropzone dropzone-columns row g-2 row-cols-1 row-cols-md-4 row-cols-xl-2 border-0 p-0 dz-clickable dz-started">
+                                    @csrf
+                                        <div class="dz-default dz-message">
+                                            <button class="dz-button" type="button">Drop files here to upload</button>
+                                        </div>
+                                        @php
+                                            $n =0;
+                                        @endphp
+                                        @for ($i = 0; $i < count($array_img); $i++)
+                                            @php
+                                                $n++
+                                            @endphp
+                                            <div class="dz-preview col border-0 h-auto me-0 dz-complete dz-image-preview">
+                                                <div class="d-flex flex-column border rounded-md">
+                                                    <div class="p-0 position-relative image-container w-100">
+                                                        <div class="preview-container rounded-0 rounded-md-top">
+                                                            <img data-dz-thumbnail="" class="img-thumbnail border-0 rounded-0 rounded-md-top sh-18" alt="cake.webp" src="{{asset('img/product/product_id_'.$product->id.'/'.$array_img[$i])}}">
+                                                        </div>
+                                                        <div class="dz-error-mark">
+                                                            <i class="cs-close-circle"></i>
+                                                        </div>
+                                                        <div class="dz-success-mark">
+                                                            <i class="cs-check"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ps-3 pt-3 pe-2 pb-1 dz-details position-relative w-100">
+                                                        <div><span data-dz-name="">Imagen Nº{{$n}}</span></div>
+                                                        <div class="text-primary text-extra-small" data-dz-size=""><strong>0</strong> b</div>
+                                                    <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress=""></span></div>
+                                                    <div class="dz-error-message"><span data-dz-errormessage=""></span></div>
+                                                </div>
+                                                <a href="#/" class="remove" data-dz-remove=""><i class="cs-bin"></i></a>
+                                            </div>
+                                        </div>
+                                        @endfor
+
+                                </form>
+                                <div class="text-center">
+                                    <button type="button" class="btn btn-foreground hover-outline btn-icon btn-icon-start mt-2" id="dropzoneProductGalleryButton">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="acorn-icons acorn-icons-plus undefined"><path d="M10 17 10 3M3 10 17 10"></path></svg>
+                                        <span>Agregar Imagen</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- Gallery End -->
             </div>
@@ -464,6 +516,8 @@ $description= 'Detalles de productos'
     </div>
 
     <script>
+
+
 
         let g_productos = document.querySelectorAll('.g_productos');
 
