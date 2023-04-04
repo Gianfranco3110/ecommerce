@@ -124,31 +124,34 @@ class ProductsDetail {
 
     if (document.getElementById('dropzoneProductGallery')) {
       new Dropzone('#dropzoneProductGallery', {
-        url: 'https://httpbin.org/post',
         thumbnailWidth: 600,
         thumbnailHeight: 430,
+        acceptedFiles: ".jpeg,.jpg,.png,.gif",
         previewTemplate: DropzoneTemplates.columnPreviewImageTemplate,
         init: function () {
           this.on('success', function (file, responseText) {
             console.log(responseText);
+            console.log(file);
+            let d = document.querySelector('#data_img');
+            console.log(d);
           });
 
           // If you only have access to the original image sizes on your server,
           // and want to resize them in the browser:
-          let mockFile1 = {name: 'cake.webp', size: 203100};
-          this.displayExistingFile(mockFile1, '/img/product/small/product-10.webp');
+        //   let mockFile1 = {name: 'cake.webp'};
+        //   this.displayExistingFile(mockFile1, '/img/product/small/product-10.webp');
 
-          let mockFile2 = {name: 'bread.webp', size: 267140};
-          this.displayExistingFile(mockFile2, '/img/product/small/product-4.webp');
+        //   let mockFile2 = {name: 'bread.webp', size: 267140};
+        //   this.displayExistingFile(mockFile2, '/img/product/small/product-4.webp');
 
-          let mockFile3 = {name: 'cupcake.webp', size: 267140};
-          this.displayExistingFile(mockFile3, '/img/product/small/product-1.webp');
+        //   let mockFile3 = {name: 'cupcake.webp', size: 267140};
+        //   this.displayExistingFile(mockFile3, '/img/product/small/product-1.webp');
 
-          let mockFile4 = {name: 'pastry.webp', size: 267140};
-          this.displayExistingFile(mockFile4, '/img/product/small/product-7.webp');
+        //   let mockFile4 = {name: 'pastry.webp', size: 267140};
+        //   this.displayExistingFile(mockFile4, '/img/product/small/product-7.webp');
 
           // Adding dz-started class to remove drop message
-          this.element.classList.add('dz-started');
+        //   this.element.classList.add('dz-started');
         },
       });
 

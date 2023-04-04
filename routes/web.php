@@ -136,6 +136,7 @@ Route::put('/AddDireccionUsuario', [App\Http\Controllers\userController::class, 
 Route::get('/product', [App\Http\Controllers\ProductController::class, 'index'])->name('product.index');
 Route::get('/newProduct', [App\Http\Controllers\ProductController::class, 'newProduct'])->name('new.product');
 Route::post('/storeProducto', [App\Http\Controllers\ProductController::class, 'store'])->name('store.product');
+Route::post('/storeProducto/img_edit', [App\Http\Controllers\ProductController::class, 'store_img_edit'])->name('storeimg.product');
 Route::get('/productEdit{id}', [App\Http\Controllers\ProductController::class, 'productEdit'])->name('product.edit');
 Route::patch('/productUpdate{id}', [App\Http\Controllers\ProductController::class, 'productUpdate'])->name('product.update');
 Route::patch('/productJsonEdit{id}', [App\Http\Controllers\ProductController::class, 'productJsonImages'])->name('pjson.images');
