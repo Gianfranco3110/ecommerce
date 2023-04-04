@@ -20,7 +20,7 @@ class CustomerLoyaltiesController extends Controller
         $customerLoyalty = Customer_loyalties::all();
         $count = count($customerLoyalty);
         // $array = [];
-        for ($i=0; $i < $count ; $i++) { 
+        for ($i=0; $i < $count ; $i++) {
             $customerLoyalty[$i]->productos = json_decode($customerLoyalty[$i]->productos);
         }
         // dd($letras);
@@ -49,6 +49,18 @@ class CustomerLoyaltiesController extends Controller
     public function store(Request $request)
     {
         //dd($request->productos);
+        $request->validate([
+            "name"=>'required',
+            "description" => "required",
+            "monto" => "required|numeric",
+            "points" => "required|numeric",
+        ],[],[
+            'name' => 'nombre',
+            'description' => 'descripción',
+            'monto' => 'monto',
+            'points' => 'points',
+            // ....
+        ]);
          $cl = new Customer_loyalties;
         $cl->name = $request->name;
         $cl->description = $request->description;
@@ -57,11 +69,11 @@ class CustomerLoyaltiesController extends Controller
         //$cl->productos = $request->productos;
         $cl->active = $request->active === null ? 0 : $request->active;
         $cl->save();
-        
+
         if ($request->productos != null){
             foreach ($request->productos as $id) {
-                // $aux = Product::where("id", $id)                      
-                // ->where("customer_loyalties_id", '!=' ,'0')               
+                // $aux = Product::where("id", $id)
+                // ->where("customer_loyalties_id", '!=' ,'0')
                 // ->get();
                 $aux = Product::find($id);
                 $aux->customer_loyalties_id = $cl->id;
@@ -77,8 +89,8 @@ class CustomerLoyaltiesController extends Controller
         // "points" => "30"
         // "productos" => "[{"id":"2","elemento":"Metras"},{"id":"1","elemento":"Lampara"}]"
         // "status" => "on"
-        $message = "Datos actualizados correctamente";
-        return redirect(route('fidel.index'))->with('message', $message);
+        $message = "Creado Correctamente";
+        return redirect(route('fidel.index'))->with('mensaje_s', $message);
     }
 
     /**
@@ -115,7 +127,18 @@ class CustomerLoyaltiesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        $request->validate([
+            "name"=>'required',
+            "description" => "required",
+            "monto" => "required|numeric",
+            "points" => "required|numeric",
+        ],[],[
+            'name' => 'nombre',
+            'description' => 'descripción',
+            'monto' => 'monto',
+            'points' => 'points',
+            // ....
+        ]);
         $customerLoyalty = Customer_loyalties::find($id);
 
         $customerLoyalty->name = $request->name;
@@ -133,8 +156,8 @@ class CustomerLoyaltiesController extends Controller
         // "productos" => "[{"id":"1","elemento":"Lampara"},{"id":"2","elemento":"Metras"}]"
         if ($request->productos != null){
             foreach ($request->productos as $id_) {
-                // $aux = Product::where("id", $id)                      
-                // ->where("customer_loyalties_id", '!=' ,'0')               
+                // $aux = Product::where("id", $id)
+                // ->where("customer_loyalties_id", '!=' ,'0')
                 // ->get();
                 $aux = Product::find($id_);
                 $aux->customer_loyalties_id = $customerLoyalty->id;
@@ -143,9 +166,9 @@ class CustomerLoyaltiesController extends Controller
         }
         $product = Product::all();
         $cl = Customer_loyalties::find($id);
-        $message = "Datos actualizados correctamente";
+        $message = "El producto por defecto, que va a tomar la fidelización es el ultimo en actualizar o crear.";
         $show = true;
-        return redirect(route('fidel.index'))->with('message', $message);
+        return redirect(route('fidel.index'))->with('mensaje', $message);
     }
 
     /**
@@ -164,7 +187,7 @@ class CustomerLoyaltiesController extends Controller
 
            try{
         $customer_loyalties = Customer_loyalties::find(3);
-   
+
   dd($customer_loyalties);
 
              $response= ['data' => $cupon];
@@ -173,7 +196,7 @@ class CustomerLoyaltiesController extends Controller
     }
       return response()->json($response);
 
-    
-      
+
+
     }
 }

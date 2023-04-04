@@ -134,6 +134,18 @@ class ProductsDetail {
             console.log(file);
             let d = document.querySelector('#data_img');
             console.log(d);
+            // $('#img_guardar').val(file)
+            var archivo = document.getElementById("img_guardar").file = file;
+            var reader = new FileReader();
+            // // if (file) {
+            //   reader.readAsDataURL(archivo );
+            //   reader.onloadend = function () {
+            //     console.log(reader.result);
+            //     document.getElementById("img").src = reader.result;
+            //   }
+            // // }
+
+
           });
 
           // If you only have access to the original image sizes on your server,

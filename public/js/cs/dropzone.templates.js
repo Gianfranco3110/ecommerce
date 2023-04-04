@@ -76,14 +76,7 @@ class DropzoneTemplates {
                         <i class="cs-check"></i>
                     </div>
                 </div>
-                <div class="ps-3 pt-3 pe-2 pb-1 dz-details position-relative w-100">
-                    <div><span data-dz-name></span></div>
-                    <div class="text-primary text-extra-small" data-dz-size />
-                    <div class="dz-error-message"><span data-dz-errormessage></span></div>
-                </div>
-                <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress=""></span></div>
-                <div class="dz-error-message"><span data-dz-errormessage></span></div>
+
             </div>
-            <a href="#/" class="remove" data-dz-remove><i class="cs-bin"></i></a>
         </div>`;
 }
