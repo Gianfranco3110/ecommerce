@@ -117,7 +117,8 @@ $description= 'Detalles de productos'
             <h2 class="small-title">Información del producto</h2>
             <div class="card">
                 <div class="card-body">
-                    <form  action="{{route('product.update',['id'=>$product->id])}}" method="post">
+                    <form  action="{{route('product.update',['id'=>$product->id])}}"  enctype="multipart/form-data"  method="post">
+                        <input type="hidden" type="file" multiple name="img_pruduct_new[]" id="img_guardar">
                         @method('PATCH')
                         @csrf
 
@@ -398,73 +399,13 @@ $description= 'Detalles de productos'
 
     <div class="col-xl-4 mb-n5">
 
-        <!-- Gallery Start -->
-        <div class="mb-5">
-            <h2 class="small-title">Galeria del producto</h2>
-            <div class="card">
-                <div class="card-body">
-                    <form class="mb-3" action="{{route('pjson.images',['id' => $product->id])}}" enctype="multipart/form-data" method="post">
-                        @csrf
-                        @method('PATCH')
-                        <div class="dropzone dropzone-columns row g-2 row-cols-1 row-cols-md-4 row-cols-xl-2 border-0 p-0" id="dropzoneProductGallery2">
-                            {{-- <div class="dropzone dropzone-columns row g-2 row-cols-1 row-cols-md-4 row-cols-xl-2 border-0 p-0" id="dropzoneProductGallery"></div> --}}
-                                @for ($i = 0; $i < count($array_img); $i++)
-                                    <a data-fancybox-trigger="preview" href="javascript:;">
-                                        {{-- <img data-dz-thumbnail=""  src="{{asset('img/product/product_id_5/5fa435ed6925c.jpeg')}}" alt="imagen no encontrada" class="g_productos"> --}}
-                                        <img data-dz-thumbnail="" class=" g_productos w-img " src="{{asset('img/product/product_id_'.$product->id.'/'.$array_img[$i])}}">
-                                    </a>
-                                @endfor
-
-                          <div class="img-dropzone">
-                                {{-- @foreach ($product->media as $image)
-
-                                 <a data-fancybox="preview"  href="{{ $image->getUrl() }}">
-
-                                </a>
-
-
-
-                                @endforeach --}}
-
-                                {{-- @foreach ($product->media as $image)
-
-
-                                 <a data-fancybox-trigger="preview" href="javascript:;">
-
-                                <img data-dz-thumbnail=""  src="{{ $image->getUrl() }}" alt="imagen no encontrada" class="g_productos">
-
-
-                                </a>
-
-                                @break
-                                @endforeach --}}
-
-
-                            </div>
-
-                            </div>
-                            <br><br>
-                            <input type="file" name="image[]" multiple label="image" id="image">
-                            <br><br>
-                            <div class="text-center">
-                                <label for="image">
-
-                                    </label>
-                                    <br><br>
-                                    <h4>{{$message}}</h4>
-
-                                    {{-- <input type="submit" value="enviar"> --}}
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <input type="hidden" id="data_img" value="{{json_encode($array_img)}}">
                     <div class="mb-5">
                         <h2 class="small-title">Galeria del producto</h2>
                         <div class="card">
                             <div class="card-body">
                                 <form action="{{ route('storeimg.product') }}" method="post" enctype="multipart/form-data" id="dropzoneProductGallery" class="dropzone dropzone-columns row g-2 row-cols-1 row-cols-md-4 row-cols-xl-2 border-0 p-0 dz-clickable dz-started">
                                     @csrf
+                                    <input type="hidden" name="id_product" value="{{$product->id}}">
                                         <div class="dz-default dz-message">
                                             <button class="dz-button" type="button">Drop files here to upload</button>
                                         </div>
@@ -488,13 +429,13 @@ $description= 'Detalles de productos'
                                                             <i class="cs-check"></i>
                                                         </div>
                                                     </div>
-                                                    <div class="ps-3 pt-3 pe-2 pb-1 dz-details position-relative w-100">
+                                                    {{-- <div class="ps-3 pt-3 pe-2 pb-1 dz-details position-relative w-100">
                                                         <div><span data-dz-name="">Imagen Nº{{$n}}</span></div>
                                                         <div class="text-primary text-extra-small" data-dz-size=""><strong>0</strong> b</div>
                                                     <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress=""></span></div>
                                                     <div class="dz-error-message"><span data-dz-errormessage=""></span></div>
                                                 </div>
-                                                <a href="#/" class="remove" data-dz-remove=""><i class="cs-bin"></i></a>
+                                                <a href="#/" class="remove" data-dz-remove=""><i class="cs-bin"></i></a> --}}
                                             </div>
                                         </div>
                                         @endfor

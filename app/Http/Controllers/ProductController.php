@@ -109,13 +109,26 @@ class ProductController extends Controller
 
     public function store_img_edit(Request $request)
     {
-        $image = $request->file('file');
+        $product = Product::find($request->id_product);
+        $array_img_actual = json_decode($product->image);
 
-        $imageName = time().'.'.$image->extension();
-        // $image->move(public_path('images'),$imageName);
+        $destinationPath = 'img/product/product_id_'.$product->id;
+        $file = $request->file('file');
+        if ($request->hasFile('file')) {
 
-        return response()->json(['success'=>$imageName]);
+            $myimage = $file->getClientOriginalName();
+            array_push($array_img_actual, $myimage);
+            $file->move(public_path($destinationPath), $myimage);
+
+            $productAux = Product::find($product->id);
+            $productAux->image = json_encode($array_img_actual);
+            $productAux->save();
+        }
+
+        return response()->json(['success'=>$array_img_actual]);
     }
+
+
     public function productUpdate(request $request, $id)
     {
         $request->validate([
