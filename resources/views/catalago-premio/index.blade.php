@@ -1,6 +1,6 @@
 @php
 $html_tag_data = [];
-$title = 'Cupones';
+$title = 'Catalogo';
 $description= 'Ecommerce Product List Page'
 @endphp
 @extends('layout',['html_tag_data'=>$html_tag_data, 'title'=>$title, 'description'=>$description])
@@ -149,6 +149,9 @@ $description= 'Ecommerce Product List Page'
                                                 <a class="dropdown-item" href="{{route('catalago-premios.edit',$catalagoPremio->id)}}">
                                                     <span class="align-middle d-inline-block">Editar</span>
                                                 </a>
+                                                <a class="dropdown-item" onclick="evaluarPremio({{$catalagoPremio}})">
+                                                    <span class="align-middle d-inline-block">Canjear</span>
+                                                </a>
                                                 {{-- <a class="dropdown-item" href="{{route('payment.delete',['id'=>$city->id])}}">
                                                     <span class="align-middle d-inline-block">Delete</span>
                                                 </a> --}}
@@ -177,3 +180,47 @@ $description= 'Ecommerce Product List Page'
     </div>
 </div>
 @endsection
+
+@push('page-script')
+<script>
+    function evaluarPremio(id)
+    {
+        console.log('asdasd',id);    
+            const data = {
+                id:id.id,
+                data:id
+            }
+            $.ajaxSetup({
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
+            });
+            $.ajax({
+                url: "{{ route('evaluarPremio') }}",
+                type: 'GET',
+                dataType: 'json',
+                data: data,
+                success: function(response) {
+                    console.log('responseee',response)
+
+                    if(response.validado === true)
+                    {
+                        // valor = response.points - response.data.puntosValidar
+                        // puntos.innerHTML =valor;
+                        // puntosCanjeados.innerHTML =response.data.puntosValidar;
+                        // descuentoPremios.innerHTML = response.data.valorDescuento;
+                        alert('Puntos canjeados satisfactoriamente');
+                    }else{
+                        // puntos.innerHTML = response.points;
+                        // puntosCanjeados.innerHTML =response.pointsCanjeados;
+                        // descuentoPremios.innerHTML = 0;
+                        alert('Sus puntos no son suficiente para este Premio')
+                    }
+                },
+                error: function(error) {
+                    console.log('error',error);
+                }
+            });
+        }
+
+</script>
+
+@endpush
